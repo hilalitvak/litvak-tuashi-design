@@ -97,10 +97,10 @@ export default function HomePage() {
               <dt className="text-xs tracking-widest text-sand">טלפון</dt>
               <dd className="mt-2" dir="ltr">
                 <a
-                  href={`tel:${contact.phones[0].replace(/\s/g, "")}`}
+                  href={`tel:${contact.phones[0].href}`}
                   className="text-cream transition-colors hover:text-sand"
                 >
-                  {contact.phones[0]}
+                  {contact.phones[0].display}
                 </a>
               </dd>
             </div>

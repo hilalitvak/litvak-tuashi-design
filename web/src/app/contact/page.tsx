@@ -48,12 +48,12 @@ export default function ContactPage() {
                 <h3 className="text-xs tracking-widest text-sand">טלפון</h3>
                 <ul className="mt-2 space-y-1" dir="ltr">
                   {contact.phones.map((phone) => (
-                    <li key={phone} className="text-right">
+                    <li key={phone.href} className="text-right">
                       <a
-                        href={`tel:${phone.replace(/\s/g, "")}`}
+                        href={`tel:${phone.href}`}
                         className="text-cream-dim transition-colors hover:text-cream"
                       >
-                        {phone}
+                        {phone.display}
                       </a>
                     </li>
                   ))}

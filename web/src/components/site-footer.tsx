@@ -53,11 +53,11 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                href={`tel:${contact.phones[0].replace(/\s/g, "")}`}
+                href={`tel:${contact.phones[0].href}`}
                 className="transition-colors hover:text-cream"
                 dir="ltr"
               >
-                {contact.phones[0]}
+                {contact.phones[0].display}
               </a>
             </li>
             <li>{contact.address.join(", ")}</li>

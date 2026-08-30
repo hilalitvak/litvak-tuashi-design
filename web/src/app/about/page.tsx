@@ -5,7 +5,7 @@ import { STUDIO_NAME, STUDIO_NAME_FULL, banners, founders, values } from "@/lib/
 
 export const metadata: Metadata = {
   title: "אודות",
-  description: `הכירו את ${STUDIO_NAME_FULL} — הסיפור, המייסדים והערכים שמנחים את עבודתנו.`,
+  description: `הכירו את ${STUDIO_NAME_FULL} — הסיפור, המעצבים והערכים שמנחים את עבודתנו.`,
 };
 
 export default function AboutPage() {
@@ -46,7 +46,7 @@ export default function AboutPage() {
       <Section>
         <SectionHeading
           eyebrow="הצוות"
-          title="הכירו את המייסדים"
+          title="הכירו את המעצבים"
           body={`המוחות היצירתיים מאחורי ${STUDIO_NAME_FULL}`}
         />
         <div className="mt-14 grid gap-8 md:grid-cols-2">
