@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/*
+  פלטת העיצוב הועברה מהאתר הישן ב-Base44 כדי לשמור על המראה במדויק:
+  רקע כמעט-שחור, טקסט בהיר, מבטא חול/אבן חמים שנלקח מהצילומים עצמם.
+*/
+@theme {
+  --color-ink: #141414; /* רקע ראשי — זהה ל-rgb(20,20,20) המקורי */
+  --color-ink-soft: #1c1c1c; /* כרטיסים וסקשנים מוגבהים */
+  --color-ink-line: #2c2c2c; /* גבולות */
+  --color-cream: #fafafa; /* טקסט ראשי */
+  --color-cream-dim: #a1a1a1; /* טקסט משני */
+  --color-sand: #c8b8a4; /* מבטא חם */
+  --color-sand-deep: #9c8a70; /* מבטא כהה יותר, למצבי hover */
+
+  --font-sans: var(--font-assistant), var(--font-montserrat), sans-serif;
+  --font-display: var(--font-montserrat), var(--font-assistant), sans-serif;
+
+  --radius: 0.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* קו מפריד דק ואלגנטי שחוזר בין סקשנים */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    var(--color-ink-line),
+    transparent
+  );
+}
+
+/* שכבת כהות מעל תמונות באנר, כדי שהטקסט יישאר קריא */
+.banner-veil {
+  background: linear-gradient(
+    to top,
+    rgba(20, 20, 20, 0.95) 0%,
+    rgba(20, 20, 20, 0.45) 45%,
+    rgba(20, 20, 20, 0.55) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

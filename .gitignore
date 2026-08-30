@@ -1,0 +1,19 @@
+node_modules/
+.next/
+out/
+build/
+.DS_Store
+*.pem
+
+# משתני סביבה — לעולם לא לקומיט
+.env
+.env*.local
+
+# עותק מקומי של 89 צילומי הפרויקטים (154MB).
+# גדול מדי ל-git. מקור האמת יהיה דלי Supabase Storage.
+# ⚠️ יש כאן גיבוי יחיד של תמונות העבודות — לא למחוק לפני ההעלאה לענן.
+assets/images/
+
+.vercel
+*.tsbuildinfo
+next-env.d.ts
