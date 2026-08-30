@@ -34,12 +34,15 @@ export const nav = [
   { href: "/contact", label: "צור קשר" },
 ] as const;
 
-/** ⚠️ PLACEHOLDER — כל פרטי הקשר להחלפה בפרטים אמיתיים. */
 export const contact = {
-  isPlaceholder: true,
-  address: ["רחוב העיצוב 123", "תל אביב, ישראל"],
-  phones: ["+972 50 123 4567", "+972 50 987 6543"],
-  emails: ["contact@litvak-tuashi.com", "info@litvak-tuashi.com"],
+  // כתובת, טלפון ואימיילים — פרטים אמיתיים שהילה מסרה ב-2026-08-30.
+  address: ["חולון, ישראל"],
+  // ⚠️ לאימות: המספר שנמסר הוא +9728585179 — שבע ספרות אחרי 972.
+  // מספר ישראלי תקין הוא שמונה ספרות (קווי) או תשע (סלולרי), כך שנראה
+  // שחסרה ספרה. מוצג כפי שנמסר עד לאישור.
+  phones: ["+9728585179"],
+  emails: ["sigal.litvak@gmail.com", "bentuashi@gmail.com"],
+  // ⚠️ PLACEHOLDER — שעות הפעילות עדיין מהאתר הישן ולא אומתו.
   hours: [
     { days: "ראשון עד חמישי", time: "9:00 - 18:00" },
     { days: "שישי", time: "9:00 - 13:00" },
