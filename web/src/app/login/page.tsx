@@ -5,7 +5,7 @@ import { LoginForm } from "./login-form";
 
 export const metadata: Metadata = {
   title: "כניסה לפורטל",
-  description: "כניסת לקוחות ומנהלים לפורטל הפרויקטים של ליטבק-תואשי עיצוב פנים.",
+  description: "כניסת לקוחות ומנהלים לפורטל הפרויקטים של ליטבק-טואשי עיצוב פנים.",
   robots: { index: false },
 };
 

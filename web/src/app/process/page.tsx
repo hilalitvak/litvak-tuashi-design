@@ -6,7 +6,7 @@ import { banners, processSteps, stats } from "@/lib/site";
 export const metadata: Metadata = {
   title: "התהליך שלנו",
   description:
-    "שש אבני דרך מהחזון ועד החלל המוגמר — כך נראה תהליך העבודה בליטבק-תואשי עיצוב פנים.",
+    "שש אבני דרך מהחזון ועד החלל המוגמר — כך נראה תהליך העבודה בליטבק-טואשי עיצוב פנים.",
 };
 
 export default function ProcessPage() {

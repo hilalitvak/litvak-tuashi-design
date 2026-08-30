@@ -6,7 +6,7 @@ import { ContactForm } from "./contact-form";
 export const metadata: Metadata = {
   title: "צור קשר",
   description:
-    "פנו אלינו לדיון בפרויקט שלכם או לקביעת פגישת ייעוץ — ליטבק-תואשי עיצוב פנים.",
+    "פנו אלינו לדיון בפרויקט שלכם או לקביעת פגישת ייעוץ — ליטבק-טואשי עיצוב פנים.",
 };
 
 export default function ContactPage() {
@@ -46,14 +46,34 @@ export default function ContactPage() {
 
               <div>
                 <h3 className="text-xs tracking-widest text-sand">טלפון</h3>
-                <ul className="mt-2 space-y-1" dir="ltr">
+                <ul className="mt-2 space-y-3">
                   {contact.phones.map((phone) => (
-                    <li key={phone.href} className="text-right">
+                    <li key={phone.href}>
                       <a
                         href={`tel:${phone.href}`}
-                        className="text-cream-dim transition-colors hover:text-cream"
+                        className="block text-cream-dim transition-colors hover:text-cream"
+                        dir="ltr"
                       >
-                        {phone.display}
+                        <span className="block text-right">
+                          {phone.display}
+                        </span>
+                      </a>
+                      <a
+                        href={`https://wa.me/${phone.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-2 rounded-sm border border-ink-line px-4 py-2 text-sm text-cream-dim transition-colors hover:border-sand hover:text-cream"
+                      >
+                        <svg
+                          aria-hidden
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          className="h-4 w-4"
+                        >
+                          <path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5v-.5c0-.2-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z" />
+                          <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.2 8.2 0 1 1 7.2 3.9z" />
+                        </svg>
+                        וואטסאפ עם {phone.owner}
                       </a>
                     </li>
                   ))}
