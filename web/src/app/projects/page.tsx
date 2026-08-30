@@ -7,7 +7,7 @@ import { banners } from "@/lib/site";
 export const metadata: Metadata = {
   title: "פרויקטים",
   description:
-    "תיק העבודות של ליטבק-תוואשי עיצוב פנים — חללים מעוצבים בקפידה ברחבי הארץ.",
+    "תיק העבודות של ליטבק-תואשי עיצוב פנים — חללים מעוצבים בקפידה ברחבי הארץ.",
 };
 
 export default function ProjectsPage() {

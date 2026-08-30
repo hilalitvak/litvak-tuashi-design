@@ -23,7 +23,7 @@ export default function AboutPage() {
           <p className="text-xs tracking-[0.25em] text-sand">הסיפור שלנו</p>
           <div className="mt-6 space-y-5 text-base leading-relaxed text-cream/90">
             <p>
-              {STUDIO_NAME_FULL} נוסדה כאשר סיגל ליטבק ובן תוואשי, שני מעצבים עם
+              {STUDIO_NAME_FULL} נוסדה כאשר סיגל ליטבק ובן תואשי, שני מעצבים עם
               סגנונות שונים אך משלימים, החליטו לשלב את כישרונותיהם ומומחיותם
               ליצירת סטודיו לעיצוב החוגג אינדיבידואליות ופונקציונליות.
             </p>

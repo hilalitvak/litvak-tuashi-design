@@ -6,7 +6,7 @@ import { ContactForm } from "./contact-form";
 export const metadata: Metadata = {
   title: "צור קשר",
   description:
-    "פנו אלינו לדיון בפרויקט שלכם או לקביעת פגישת ייעוץ — ליטבק-תוואשי עיצוב פנים.",
+    "פנו אלינו לדיון בפרויקט שלכם או לקביעת פגישת ייעוץ — ליטבק-תואשי עיצוב פנים.",
 };
 
 export default function ContactPage() {

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: project.title,
     description:
       project.description ??
-      `${project.title}${project.location ? ` — ${project.location}` : ""}. מתוך תיק העבודות של ליטבק-תוואשי עיצוב פנים.`,
+      `${project.title}${project.location ? ` — ${project.location}` : ""}. מתוך תיק העבודות של ליטבק-תואשי עיצוב פנים.`,
   };
 }
 
