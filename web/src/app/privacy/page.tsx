@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           לכל שאלה בנושא פרטיות אפשר לפנות אלינו במייל{" "}
-          <a href={`mailto:${contact.emails[0]}`}>{contact.emails[0]}</a>.
+          <a href={`mailto:${contact.emails[0].address}`}>{contact.emails[0].address}</a>.
         </p>
       </LegalSection>
 
@@ -95,7 +95,7 @@ export default function PrivacyPage() {
         </ul>
         <p>
           פנייה במייל אל{" "}
-          <a href={`mailto:${contact.emails[0]}`}>{contact.emails[0]}</a> תיענה
+          <a href={`mailto:${contact.emails[0].address}`}>{contact.emails[0].address}</a> תיענה
           תוך זמן סביר.
         </p>
       </LegalSection>
@@ -118,7 +118,7 @@ export default function PrivacyPage() {
         <p>
           {STUDIO_NAME_FULL}, {contact.address.join(", ")}
           <br />
-          <a href={`mailto:${contact.emails[0]}`}>{contact.emails[0]}</a>
+          <a href={`mailto:${contact.emails[0].address}`}>{contact.emails[0].address}</a>
           <br />
           <span dir="ltr">{contact.phones[0].display}</span>
         </p>

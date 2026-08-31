@@ -91,7 +91,7 @@ export default function TermsPage() {
         <p>
           {STUDIO_NAME_FULL}, {contact.address.join(", ")}
           <br />
-          <a href={`mailto:${contact.emails[0]}`}>{contact.emails[0]}</a>
+          <a href={`mailto:${contact.emails[0].address}`}>{contact.emails[0].address}</a>
         </p>
         <p>
           ראו גם את <Link href="/privacy">מדיניות הפרטיות</Link>.

@@ -40,6 +40,8 @@ export const contact = {
   // display — כפי שהילה ביקשה שיוצג.
   // href — E.164 לקישור החיוג. whatsapp — אותו מספר בלי + ובלי רווחים,
   // כפי ש-wa.me דורש.
+  // כל פרט קשר משויך לבעליו, כדי שפונה יידע למי הוא מגיע.
+  // להוספת הטלפון של בן — עוד רשומה כאן, ושאר האתר יתעדכן לבד.
   phones: [
     {
       owner: "סיגל",
@@ -47,8 +49,17 @@ export const contact = {
       href: "+972528585179",
       whatsapp: "972528585179",
     },
+    {
+      owner: "בן",
+      display: "+972 526400860",
+      href: "+972526400860",
+      whatsapp: "972526400860",
+    },
   ],
-  emails: ["sigal.litvak@gmail.com", "bentuashi@gmail.com"],
+  emails: [
+    { owner: "סיגל", address: "sigal.litvak@gmail.com" },
+    { owner: "בן", address: "bentuashi@gmail.com" },
+  ],
   // ⚠️ PLACEHOLDER — שעות הפעילות עדיין מהאתר הישן ולא אומתו.
   hours: [
     { days: "ראשון עד חמישי", time: "9:00 - 18:00" },
@@ -133,8 +144,8 @@ export const stats = [
 export const banners = {
   home: "08bac0737_home_banner.jpg",
   projects: "929da58d4_projects_banner.jpg",
-  about: "becd911ef_about_banner.png",
-  process: "b4a5c3a77_our_process_banner.png",
+  about: "becd911ef_about_banner.jpg",
+  process: "b4a5c3a77_our_process_banner.jpg",
 };
 
 export const LOGO = "9c20f6_logo.png";

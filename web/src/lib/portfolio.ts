@@ -1,8 +1,8 @@
 // נוצר אוטומטית מייצוא Base44 (data/base44-export/PortfolioProject.csv).
-// התמונות מוגשות מאחסון הענן; להחלפה בדלי Supabase משלכם — עדכנו IMAGE_BASE בלבד.
+// התמונות מוגשות מדלי portfolio ב-Supabase של הסטודיו (מאופטמות, ראו scripts/optimize-images.mjs).
 
 export const IMAGE_BASE =
-  "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/";
+  "https://tegccsfcfwnqtdtaczsl.supabase.co/storage/v1/object/public/portfolio/";
 
 export type PortfolioProject = {
   slug: string;

@@ -49,6 +49,9 @@ export default function ContactPage() {
                 <ul className="mt-2 space-y-3">
                   {contact.phones.map((phone) => (
                     <li key={phone.href}>
+                      <span className="block text-xs text-cream-dim/70">
+                        {phone.owner}
+                      </span>
                       <a
                         href={`tel:${phone.href}`}
                         className="block text-cream-dim transition-colors hover:text-cream"
@@ -82,14 +85,20 @@ export default function ContactPage() {
 
               <div>
                 <h3 className="text-xs tracking-widest text-sand">אימייל</h3>
-                <ul className="mt-2 space-y-1">
+                <ul className="mt-2 space-y-2">
                   {contact.emails.map((email) => (
-                    <li key={email}>
+                    <li key={email.address}>
+                      <span className="block text-xs text-cream-dim/70">
+                        {email.owner}
+                      </span>
                       <a
-                        href={`mailto:${email}`}
+                        href={`mailto:${email.address}`}
                         className="text-cream-dim transition-colors hover:text-cream"
+                        dir="ltr"
                       >
-                        {email}
+                        <span className="block text-right">
+                          {email.address}
+                        </span>
                       </a>
                     </li>
                   ))}

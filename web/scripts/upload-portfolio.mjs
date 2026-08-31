@@ -14,12 +14,14 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { fileURLToPath } from "node:url";
+const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 
-const SRC = "assets/optimized";
+const SRC = ROOT + "assets/optimized";
 const BUCKET = "portfolio";
 
 // קריאת משתני הסביבה מ-web/.env.local בלי להדפיס אותם.
-const envText = await readFile("web/.env.local", "utf8").catch(() => {
+const envText = await readFile(ROOT + "web/.env.local", "utf8").catch(() => {
   console.error(
     "לא נמצא web/.env.local. צרו אותו והוסיפו SUPABASE_SERVICE_ROLE_KEY."
   );

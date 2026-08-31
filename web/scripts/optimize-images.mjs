@@ -11,9 +11,11 @@
 import { readdir, mkdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
+import { fileURLToPath } from "node:url";
+const ROOT = fileURLToPath(new URL("../../", import.meta.url));
 
-const SRC = "assets/images";
-const OUT = "assets/optimized";
+const SRC = ROOT + "assets/images";
+const OUT = ROOT + "assets/optimized";
 const MAX_WIDTH = 2400;
 const JPEG_QUALITY = 82;
 

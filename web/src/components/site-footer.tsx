@@ -43,23 +43,29 @@ export function SiteFooter() {
         <div>
           <h2 className="text-sm tracking-widest text-sand">יצירת קשר</h2>
           <ul className="mt-4 space-y-2.5 text-sm text-cream-dim">
-            <li>
-              <a
-                href={`mailto:${contact.emails[0]}`}
-                className="transition-colors hover:text-cream"
-              >
-                {contact.emails[0]}
-              </a>
-            </li>
-            <li>
-              <a
-                href={`tel:${contact.phones[0].href}`}
-                className="transition-colors hover:text-cream"
-                dir="ltr"
-              >
-                {contact.phones[0].display}
-              </a>
-            </li>
+            {contact.emails.map((email) => (
+              <li key={email.address}>
+                <span className="text-cream-dim/70">{email.owner}: </span>
+                <a
+                  href={`mailto:${email.address}`}
+                  className="transition-colors hover:text-cream"
+                >
+                  {email.address}
+                </a>
+              </li>
+            ))}
+            {contact.phones.map((phone) => (
+              <li key={phone.href}>
+                <span className="text-cream-dim/70">{phone.owner}: </span>
+                <a
+                  href={`tel:${phone.href}`}
+                  className="transition-colors hover:text-cream"
+                  dir="ltr"
+                >
+                  {phone.display}
+                </a>
+              </li>
+            ))}
             <li>{contact.address.join(", ")}</li>
           </ul>
         </div>

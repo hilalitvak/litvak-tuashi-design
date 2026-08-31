@@ -81,29 +81,37 @@ export default function HomePage() {
             את החזון שלכם.
           </p>
 
-          <dl className="mx-auto mt-12 grid max-w-lg gap-8 sm:grid-cols-2">
-            <div>
-              <dt className="text-xs tracking-widest text-sand">אימייל</dt>
-              <dd className="mt-2">
-                <a
-                  href={`mailto:${contact.emails[0]}`}
-                  className="text-cream transition-colors hover:text-sand"
-                >
-                  {contact.emails[0]}
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs tracking-widest text-sand">טלפון</dt>
-              <dd className="mt-2" dir="ltr">
-                <a
-                  href={`tel:${contact.phones[0].href}`}
-                  className="text-cream transition-colors hover:text-sand"
-                >
-                  {contact.phones[0].display}
-                </a>
-              </dd>
-            </div>
+          <dl className="mx-auto mt-12 grid max-w-2xl gap-8 sm:grid-cols-3">
+            {contact.emails.map((email) => (
+              <div key={email.address}>
+                <dt className="text-xs tracking-widest text-sand">
+                  {email.owner}
+                </dt>
+                <dd className="mt-2">
+                  <a
+                    href={`mailto:${email.address}`}
+                    className="text-sm text-cream transition-colors hover:text-sand"
+                  >
+                    {email.address}
+                  </a>
+                </dd>
+              </div>
+            ))}
+            {contact.phones.map((phone) => (
+              <div key={phone.href}>
+                <dt className="text-xs tracking-widest text-sand">
+                  טלפון — {phone.owner}
+                </dt>
+                <dd className="mt-2" dir="ltr">
+                  <a
+                    href={`tel:${phone.href}`}
+                    className="text-sm text-cream transition-colors hover:text-sand"
+                  >
+                    {phone.display}
+                  </a>
+                </dd>
+              </div>
+            ))}
           </dl>
 
           <div className="mt-12">
