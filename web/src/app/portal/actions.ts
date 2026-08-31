@@ -168,6 +168,45 @@ export async function deleteFolder(
   return { ok: "הספרייה נמחקה." };
 }
 
+/**
+ * העברת תפקיד "תיבת ההעלאות" לספרייה אחרת.
+ *
+ * קיים אינדקס ייחודי שמתיר תיבה אחת לכל פרויקט, ולכן מנקים קודם את הדגל
+ * מכל הספריות ורק אז מסמנים את החדשה. הסדר הזה חשוב — הפוך היה מפר אותו.
+ */
+export async function setClientInbox(
+  projectId: string,
+  folderId: string
+): Promise<ActionState> {
+  try {
+    await requireAdmin();
+  } catch (e) {
+    return { error: (e as Error).message };
+  }
+
+  const supabase = await createClient();
+
+  const { error: clearErr } = await supabase
+    .from("project_folders")
+    .update({ is_client_inbox: false })
+    .eq("project_id", projectId);
+
+  if (clearErr) return { error: "העדכון נכשל." };
+
+  const { error } = await supabase
+    .from("project_folders")
+    .update({ is_client_inbox: true })
+    .eq("id", folderId);
+
+  if (error) {
+    console.error("setClientInbox", error);
+    return { error: "העדכון נכשל. ייתכן שהפרויקט נשאר בלי תיבת העלאות." };
+  }
+
+  revalidatePath(`/portal/projects/${projectId}`);
+  return { ok: "זו עכשיו תיבת ההעלאות של הלקוח." };
+}
+
 export async function renameFile(
   projectId: string,
   fileId: string,

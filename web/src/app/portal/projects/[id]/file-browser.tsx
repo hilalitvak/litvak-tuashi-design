@@ -12,6 +12,7 @@ import {
   moveFile,
   renameFile,
   renameFolder,
+  setClientInbox,
 } from "../../actions";
 
 type Props = {
@@ -231,7 +232,7 @@ export function FileBrowser({
                 </>
               )}
 
-              {isAdmin && activeFolder && !activeFolder.is_client_inbox && (
+              {isAdmin && activeFolder && (
                 <>
                   <button
                     type="button"
@@ -250,28 +251,56 @@ export function FileBrowser({
                   >
                     שינוי שם
                   </button>
-                  <button
-                    type="button"
-                    disabled={busy}
-                    onClick={() => {
-                      const n = files.filter(
-                        (x) => x.folder_id === activeFolder.id
-                      ).length;
-                      if (
-                        window.confirm(
-                          n
-                            ? `מחיקת "${activeFolder.name}" תמחק גם ${n} קבצים שבתוכה. להמשיך?`
-                            : `למחוק את "${activeFolder.name}"?`
+
+                  {!activeFolder.is_client_inbox && (
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() => {
+                        if (
+                          window.confirm(
+                            `להפוך את "${activeFolder.name}" לתיבת ההעלאות של הלקוח?\n\n` +
+                              `"${inbox?.name ?? "הספרייה הנוכחית"}" תפסיק לשמש לכך, ואז אפשר יהיה למחוק אותה.`
+                          )
                         )
-                      ) {
-                        run(() => deleteFolder(projectId, activeFolder.id));
-                        setActive(folders[0]?.id ?? null);
-                      }
-                    }}
-                    className="rounded-sm border border-ink-line px-3 py-2 text-xs text-red-400/80 transition-colors hover:text-red-400 disabled:opacity-50"
-                  >
-                    מחיקה
-                  </button>
+                          run(() => setClientInbox(projectId, activeFolder.id));
+                      }}
+                      className="rounded-sm border border-ink-line px-3 py-2 text-xs text-cream-dim transition-colors hover:text-cream disabled:opacity-50"
+                    >
+                      הפוך לתיבת העלאות
+                    </button>
+                  )}
+                  {activeFolder.is_client_inbox ? (
+                    <span
+                      title="כדי למחוק ספרייה זו, יש להפוך קודם ספרייה אחרת לתיבת ההעלאות"
+                      className="px-3 py-2 text-xs text-cream-dim/60"
+                    >
+                      תיבת ההעלאות — לא ניתנת למחיקה
+                    </span>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled={busy}
+                      onClick={() => {
+                        const n = files.filter(
+                          (x) => x.folder_id === activeFolder.id
+                        ).length;
+                        if (
+                          window.confirm(
+                            n
+                              ? `מחיקת "${activeFolder.name}" תמחק גם ${n} קבצים שבתוכה. להמשיך?`
+                              : `למחוק את "${activeFolder.name}"?`
+                          )
+                        ) {
+                          run(() => deleteFolder(projectId, activeFolder.id));
+                          setActive(folders[0]?.id ?? null);
+                        }
+                      }}
+                      className="rounded-sm border border-ink-line px-3 py-2 text-xs text-red-400/80 transition-colors hover:text-red-400 disabled:opacity-50"
+                    >
+                      מחיקה
+                    </button>
+                  )}
                 </>
               )}
             </div>
