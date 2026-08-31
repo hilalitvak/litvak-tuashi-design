@@ -50,6 +50,9 @@ set local role authenticated;
 set local request.jwt.claims = '{"sub":"11111111-1111-1111-1111-111111111111","role":"authenticated"}';
 
 create temp table results (test text, expected text, got text, verdict text) on commit drop;
+-- טבלת התוצאות עצמה צריכה להיות כתיבה גם כשמתחזים ל-anon,
+-- אחרת הבדיקה נכשלת על עצמה ולא על מה שהיא בודקת.
+grant all on results to authenticated, anon;
 
 -- 1. כמה פרויקטים אליס רואה? צריך: רק שלה
 insert into results
@@ -168,7 +171,7 @@ end $$;
 
 -- ── מתחזים למבקר אנונימי ──────────────────────────────────────
 set local role anon;
-set local request.jwt.claims = null;
+set local request.jwt.claims = '{}';
 
 insert into results
 select 'אנונימי רואה פרויקטים', '0 שורות', count(*)::text,
@@ -190,6 +193,12 @@ select 'אנונימי רואה תיק עבודות', 'מותר (ציבורי)',
 where true;
 
 reset role;
-select * from results order by verdict desc, test;
+
+-- סיכום קודם, כדי שלא יהיה צורך לגלול טבלה מווירטואלת כדי לדעת אם עברנו.
+select
+  count(*) filter (where verdict = 'PASS') as passed,
+  count(*) filter (where verdict = 'FAIL') as failed,
+  string_agg(test, ' | ') filter (where verdict = 'FAIL') as failing_tests
+from results;
 
 rollback;
