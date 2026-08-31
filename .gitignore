@@ -17,3 +17,6 @@ assets/images/
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# תמונות מאופטמות — נוצרות מ-assets/images ע"י scripts/optimize-images.mjs
+assets/optimized/

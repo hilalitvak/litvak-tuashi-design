@@ -48,3 +48,23 @@ create policy "project files admin update"
 create policy "project files admin delete"
   on storage.objects for delete
   using (bucket_id = 'project-files' and is_admin());
+
+
+-- ═════════════════════════════════════════════════════════════
+-- דלי צילומי תיק העבודות — ציבורי בכוונה.
+-- אלה תמונות שיווקיות שמוצגות לכל מבקר באתר, ולכן אין טעם
+-- בקישורים חתומים כאן. כתיבה — מנהלים בלבד.
+-- ═════════════════════════════════════════════════════════════
+
+insert into storage.buckets (id, name, public, file_size_limit)
+values ('portfolio', 'portfolio', true, 10485760)  -- 10MB לקובץ
+on conflict (id) do nothing;
+
+create policy "portfolio public read"
+  on storage.objects for select
+  using (bucket_id = 'portfolio');
+
+create policy "portfolio admin write"
+  on storage.objects for all
+  using (bucket_id = 'portfolio' and is_admin())
+  with check (bucket_id = 'portfolio' and is_admin());
