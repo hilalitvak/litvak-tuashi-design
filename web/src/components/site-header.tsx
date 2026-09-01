@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LOGO, STUDIO_NAME_EN, nav } from "@/lib/site";
-import { img } from "@/lib/images";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -31,19 +30,20 @@ export function SiteHeader() {
           : "bg-gradient-to-b from-ink/80 to-transparent"
       }`}
     >
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link
           href="/"
           className="shrink-0"
           aria-label={`${STUDIO_NAME_EN} — לעמוד הבית`}
         >
+          {/* הלוגו כבר לבן ושקוף בקובץ עצמו, ולכן בלי פילטרים. */}
           <Image
-            src={img(LOGO)}
+            src={LOGO}
             alt={STUDIO_NAME_EN}
-            width={132}
-            height={44}
+            width={470}
+            height={170}
             priority
-            className="h-10 w-auto brightness-0 invert"
+            className="h-12 w-auto sm:h-14"
           />
         </Link>
 
@@ -58,7 +58,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`text-sm tracking-wide transition-colors ${
+                className={`text-[15px] tracking-wide transition-colors ${
                   active
                     ? "text-sand"
                     : "text-cream/80 hover:text-cream"
@@ -73,7 +73,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="hidden rounded-sm border border-cream/30 px-5 py-2 text-sm text-cream transition-colors hover:border-sand hover:text-sand sm:inline-block"
+            className="hidden rounded-sm border border-cream/30 px-5 py-2.5 text-[15px] text-cream transition-colors hover:border-sand hover:text-sand sm:inline-block"
           >
             כניסה לפורטל
           </Link>
@@ -116,7 +116,7 @@ export function SiteHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className="block border-b border-ink-line/60 py-3.5 text-cream/90"
+              className="block border-b border-ink-line/60 py-4 text-base text-cream/90"
             >
               {item.label}
             </Link>

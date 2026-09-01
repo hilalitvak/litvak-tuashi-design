@@ -88,19 +88,7 @@ export default function ContactPage() {
                 </ul>
               </div>
 
-              <div>
-                <h3 className="text-xs tracking-widest text-sand">
-                  שעות פעילות
-                </h3>
-                <dl className="mt-2 space-y-1 text-cream-dim">
-                  {contact.hours.map((row) => (
-                    <div key={row.days} className="flex gap-2">
-                      <dt>{row.days}:</dt>
-                      <dd>{row.time}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
+
             </div>
           </div>
 

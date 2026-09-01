@@ -59,7 +59,7 @@ export default function ProcessPage() {
 
       <Section>
         <SectionHeading title="במספרים" />
-        <dl className="mx-auto mt-12 grid max-w-3xl gap-8 text-center sm:grid-cols-3">
+        <dl className="mx-auto mt-12 grid max-w-xl gap-8 text-center sm:grid-cols-2">
           {stats.map((stat) => (
             <div key={stat.label}>
               <dt className="sr-only">{stat.label}</dt>

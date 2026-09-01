@@ -1,67 +1,76 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageBanner } from "@/components/page-banner";
-import { ButtonLink, Section, SectionHeading } from "@/components/ui";
-import { STUDIO_NAME, STUDIO_NAME_FULL, banners, founders, values } from "@/lib/site";
+import { ButtonLink, Section } from "@/components/ui";
+import {
+  STUDIO_NAME_EN,
+  TAGLINE,
+  banners,
+  founders,
+  values,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "אודות",
-  description: `הכירו את ${STUDIO_NAME_FULL} — הסיפור, המעצבים והערכים שמנחים את עבודתנו.`,
+  description:
+    "סטודיו לעיצוב ואדריכלות פנים שהוקם ב-2012 על ידי סיגל ליטבק ובן טואשי.",
 };
 
 export default function AboutPage() {
   return (
     <>
-      <PageBanner
-        image={banners.about}
-        title={`אודות ${STUDIO_NAME}`}
-        subtitle="אנחנו צוות נלהב של מעצבים המוקדש ליצירת חללים מתחשבים, פונקציונליים ויפים המשקפים את אישיותם הייחודית של לקוחותינו."
-        priority
-      />
+      <PageBanner image={banners.about} title={TAGLINE} priority />
 
+      {/* הסיפור — שתי פסקאות. המסמך של סיגל ארוך בהרבה, אבל עמוד
+          אודות שדורש גלילה ארוכה פשוט לא נקרא עד הסוף. */}
       <Section>
-        <div className="mx-auto max-w-3xl">
-          <p className="text-xs tracking-[0.25em] text-sand">הסיפור שלנו</p>
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-cream/90">
-            <p>
-              {STUDIO_NAME_FULL} נוסדה כאשר סיגל ליטבק ובן טואשי, שני מעצבים עם
-              סגנונות שונים אך משלימים, החליטו לשלב את כישרונותיהם ומומחיותם
-              ליצירת סטודיו לעיצוב החוגג אינדיבידואליות ופונקציונליות.
-            </p>
-            <p className="text-cream-dim">
-              מה שהחל כסטודיו קטן בתל אביב צמח למשרד עיצוב מוערך עם פרויקטים
-              ברחבי ישראל. צמיחתנו הייתה אורגנית, ונבנתה על המלצות מלקוחות
-              מרוצים המעריכים את גישתנו השיתופית ותשומת הלב לפרטים.
-            </p>
-            <p className="text-cream-dim">
-              כיום, אנו ממשיכים לגשת לכל פרויקט באותה תשוקה ומסירות שחיברה
-              בינינו, ויוצרים חללים שהם לא רק יפים אלא גם אישיים ופונקציונליים
-              מאוד עבור דייריהם.
-            </p>
-          </div>
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-lg leading-relaxed text-cream/90">
+            {STUDIO_NAME_EN} הוקם ב-2012 על ידי סיגל ליטבק ובן טואשי — שני
+            מעצבים בעלי סגנונות שונים אך משלימים, מתוך חזון משותף ליצור מרחבים
+            שמבטאים ייחודיות, הרמוניה ופונקציונליות אמיתית.
+          </p>
+          <p className="mt-6 leading-relaxed text-cream-dim">
+            מה שהתחיל כסטודיו קטן התפתח למשרד עיצוב הפעיל בפרויקטים ברחבי הארץ
+            ובעולם — דירות, בתים פרטיים, פנטהאוזים, משרדים וחללים מסחריים.
+          </p>
         </div>
       </Section>
 
       <div className="rule" />
 
       <Section>
-        <SectionHeading
-          eyebrow="הצוות"
-          title="הכירו את המעצבים"
-          body={`המוחות היצירתיים מאחורי ${STUDIO_NAME_FULL}`}
-        />
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <h2 className="text-center font-display text-3xl font-light text-cream">
+          הכירו את המעצבים
+        </h2>
+
+        <div className="mx-auto mt-14 grid max-w-4xl gap-10 sm:grid-cols-2">
           {founders.map((person) => (
-            <article
-              key={person.name}
-              className="rounded-sm border border-ink-line bg-ink-soft p-8"
-            >
-              <h3 className="font-display text-2xl font-light text-cream">
+            <article key={person.name} className="text-center">
+              <div className="relative mx-auto aspect-square w-40 overflow-hidden rounded-full border border-ink-line bg-ink-soft">
+                {person.photo ? (
+                  <Image
+                    src={person.photo}
+                    alt={person.name}
+                    fill
+                    sizes="160px"
+                    className="object-cover"
+                  />
+                ) : (
+                  // עד שתגיע תמונה — ראשי תיבות, ולא ריבוע ריק.
+                  <span className="grid h-full w-full place-items-center font-display text-3xl font-light text-cream-dim">
+                    {person.name.charAt(0)}
+                  </span>
+                )}
+              </div>
+
+              <h3 className="mt-6 font-display text-2xl font-light text-cream">
                 {person.name}
               </h3>
               <p className="mt-1 text-sm tracking-wide text-sand">
                 {person.role}
               </p>
-              <p className="mt-5 text-sm leading-relaxed text-cream-dim">
+              <p className="mt-4 text-sm leading-relaxed text-cream-dim">
                 {person.bio}
               </p>
             </article>
@@ -72,22 +81,14 @@ export default function AboutPage() {
       <div className="rule" />
 
       <Section>
-        <SectionHeading
-          eyebrow="הערכים שלנו"
-          title="מה שמנחה אותנו"
-          body="העקרונות המנחים את עבודתנו ומערכות היחסים שלנו"
-        />
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-3">
           {values.map((value) => (
-            <article
-              key={value.title}
-              className="rounded-sm border border-ink-line p-7"
-            >
-              <h3 className="font-display text-lg text-cream">{value.title}</h3>
+            <div key={value.title}>
+              <h3 className="font-display text-lg text-sand">{value.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-cream-dim">
                 {value.body}
               </p>
-            </article>
+            </div>
           ))}
         </div>
       </Section>
@@ -95,14 +96,10 @@ export default function AboutPage() {
       <section className="border-t border-ink-line bg-ink-soft">
         <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8">
           <h2 className="font-display text-3xl font-light text-cream sm:text-4xl">
-            מוכנים להפוך את החלל שלכם?
+            מוכנים להתחיל?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-cream-dim">
-            צרו איתנו קשר עוד היום לקביעת פגישת ייעוץ ועשו את הצעד הראשון ליצירת
-            חלל המשקף את אישיותכם ואורח חייכם הייחודי.
-          </p>
-          <div className="mt-10">
-            <ButtonLink href="/contact">צרו קשר</ButtonLink>
+          <div className="mt-8">
+            <ButtonLink href="/contact">דברו איתנו</ButtonLink>
           </div>
         </div>
       </section>
