@@ -5,13 +5,13 @@ import {
   Section,
   SectionHeading,
 } from "@/components/ui";
-import { featuredProjects } from "@/lib/portfolio";
+import { getFeaturedProjects } from "@/lib/portfolio";
 import { STUDIO_NAME_FULL, banners, contact } from "@/lib/site";
 
-export default function HomePage() {
+export default async function HomePage() {
   // בניגוד לאתר הישן — שהציג בעמוד הבית שישה פרויקטים מומצאים שקודדו קשיח —
   // כאן מוצגים הפרויקטים האמיתיים מתיק העבודות.
-  const showcase = featuredProjects.slice(0, 6);
+  const showcase = (await getFeaturedProjects()).slice(0, 6);
 
   return (
     <>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LOGO, STUDIO_NAME_EN, nav } from "@/lib/site";
-import { img } from "@/lib/portfolio";
+import { img } from "@/lib/images";
 
 export function SiteHeader() {
   const pathname = usePathname();

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { img, type PortfolioProject } from "@/lib/portfolio";
+import { img } from "@/lib/images";
+import type { PortfolioProject } from "@/lib/portfolio";
 
 export function Section({
   children,
@@ -70,7 +71,7 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
     >
       <div className="relative aspect-4/3 overflow-hidden">
         <Image
-          src={img(project.banner)}
+          src={img(project.banner_image)}
           alt={project.title}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

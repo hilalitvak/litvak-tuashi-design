@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageBanner } from "@/components/page-banner";
 import { ButtonLink, ProjectCard, Section } from "@/components/ui";
-import { portfolioProjects } from "@/lib/portfolio";
+import { getPortfolioProjects } from "@/lib/portfolio";
 import { banners } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -10,7 +10,9 @@ export const metadata: Metadata = {
     "תיק העבודות של ליטבק-טואשי עיצוב פנים — חללים מעוצבים בקפידה ברחבי הארץ.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getPortfolioProjects();
+
   return (
     <>
       <PageBanner
@@ -22,7 +24,7 @@ export default function ProjectsPage() {
 
       <Section>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolioProjects.map((project) => (
+          {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>

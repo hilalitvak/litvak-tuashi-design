@@ -3,18 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui";
-import { getProject, img, portfolioProjects } from "@/lib/portfolio";
+import { getPortfolioProjects, getProject } from "@/lib/portfolio";
+import { img } from "@/lib/images";
 import { categoryLabels } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return portfolioProjects.map((p) => ({ slug: p.slug }));
+// slug חדש שסיגל תוסיף ייווצר בבקשה הראשונה במקום להחזיר 404 עד הבנייה הבאה.
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const projects = await getPortfolioProjects();
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) return {};
   return {
     title: project.title,
@@ -26,17 +31,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function ProjectPage({ params }: Params) {
   const { slug } = await params;
-  const project = getProject(slug);
+  const project = await getProject(slug);
   if (!project) notFound();
 
   // הבאנר מופיע בראש; אין טעם להציג אותו שוב בתוך הגלריה.
-  const gallery = project.gallery.filter((name) => name !== project.banner);
+  const gallery = project.gallery.filter((name) => name !== project.banner_image);
 
   return (
     <>
       <section className="relative flex min-h-[62vh] items-end overflow-hidden pt-20">
         <Image
-          src={img(project.banner)}
+          src={img(project.banner_image)}
           alt={project.title}
           fill
           priority

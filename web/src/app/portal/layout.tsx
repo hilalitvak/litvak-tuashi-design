@@ -38,6 +38,14 @@ export default async function PortalLayout({
             <span className="rounded-sm border border-ink-line px-2 py-0.5 text-xs text-sand">
               {isAdmin ? "ניהול" : "פורטל לקוח"}
             </span>
+            {isAdmin && (
+              <Link
+                href="/portal/portfolio"
+                className="text-sm text-cream-dim transition-colors hover:text-cream"
+              >
+                תיק העבודות
+              </Link>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
