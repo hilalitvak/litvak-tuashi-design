@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageBanner } from "@/components/page-banner";
 import { ButtonLink, Section, SectionHeading } from "@/components/ui";
-import { banners, processSteps, stats } from "@/lib/site";
+import { banners, processSteps } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "התהליך שלנו",
@@ -53,27 +53,6 @@ export default function ProcessPage() {
             </li>
           ))}
         </ol>
-      </Section>
-
-      <div className="rule" />
-
-      <Section>
-        <SectionHeading title="במספרים" />
-        <dl className="mx-auto mt-12 grid max-w-xl gap-8 text-center sm:grid-cols-2">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <dt className="sr-only">{stat.label}</dt>
-              <dd>
-                <span className="block font-display text-4xl font-light text-sand">
-                  {stat.value}
-                </span>
-                <span className="mt-2 block text-sm text-cream-dim">
-                  {stat.label}
-                </span>
-              </dd>
-            </div>
-          ))}
-        </dl>
       </Section>
 
       <section className="border-t border-ink-line bg-ink-soft">
