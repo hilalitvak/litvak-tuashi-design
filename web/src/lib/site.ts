@@ -133,6 +133,7 @@ export const banners = {
   projects: "929da58d4_projects_banner.jpg",
   about: "becd911ef_about_banner.jpg",
   process: "b4a5c3a77_our_process_banner.jpg",
+  contact: "de4ab9aac_3-.jpg",
 };
 
 /** הלוגו של הסטודיו. קובץ מקומי ב-public — הרקע הלבן הוסר

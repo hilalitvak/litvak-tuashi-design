@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Section } from "@/components/ui";
+import Image from "next/image";
 import { WhatsAppButton } from "@/components/whatsapp-button";
-import { contact } from "@/lib/site";
+import { img } from "@/lib/images";
+import { banners, contact } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "צור קשר",
@@ -11,109 +12,72 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <>
-      <div className="border-b border-ink-line pt-20">
-        <div className="mx-auto max-w-7xl px-5 py-16 text-center sm:px-8">
-          <h1 className="font-display text-4xl font-light text-cream sm:text-5xl">
-            צרו קשר
-          </h1>
-          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-cream-dim">
-            נשמח לשמוע מכם. פנו אלינו לדיון בפרויקט שלכם או לקביעת פגישת ייעוץ.
-          </p>
+    // עמוד אחד, מסך אחד. הוואטסאפ במרכז כי זו הפנייה שבאמת קורית;
+    // הטלפון והמייל מתחתיו למי שמעדיף, והמיקום בשוליים.
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24">
+      <Image
+        src={img(banners.contact)}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      {/* שכבה כהה וכבדה — הרקע הוא אווירה, לא נושא. */}
+      <div className="absolute inset-0 bg-ink/85" />
+
+      <div className="relative mx-auto w-full max-w-xl px-5 py-20 text-center sm:px-8">
+        <h1 className="font-display text-4xl font-light text-cream sm:text-5xl">
+          דברו איתנו
+        </h1>
+        <p className="mx-auto mt-4 max-w-md leading-relaxed text-cream-dim">
+          הדרך המהירה ביותר להגיע אלינו. בחרו למי לפנות ונחזור אליכם בהקדם.
+        </p>
+
+        <div className="mt-10 grid gap-3 sm:grid-cols-2">
+          {contact.phones.map((phone) => (
+            <WhatsAppButton
+              key={phone.href}
+              number={phone.whatsapp}
+              owner={phone.owner}
+              size="large"
+            />
+          ))}
         </div>
+
+        <div className="mt-14 grid gap-8 sm:grid-cols-2">
+          {contact.phones.map((phone) => {
+            const email = contact.emails.find((e) => e.owner === phone.owner);
+            return (
+              <div key={phone.href}>
+                <p className="text-xs tracking-widest text-sand">
+                  {phone.owner}
+                </p>
+                <a
+                  href={`tel:${phone.href}`}
+                  className="mt-2 block text-sm text-cream-dim transition-colors hover:text-cream"
+                  dir="ltr"
+                >
+                  {phone.display}
+                </a>
+                {email && (
+                  <a
+                    href={`mailto:${email.address}`}
+                    className="mt-1 block text-sm text-cream-dim transition-colors hover:text-cream"
+                    dir="ltr"
+                  >
+                    {email.address}
+                  </a>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <p className="mt-14 text-sm text-cream-dim/70">
+          {contact.address.join(", ")}
+        </p>
       </div>
-
-      <Section>
-        <div className="grid gap-14 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-2xl font-light text-cream">
-              הישארו בקשר
-            </h2>
-
-            <div className="mt-8 space-y-8">
-              <div>
-                <h3 className="text-xs tracking-widest text-sand">
-                  הסטודיו שלנו
-                </h3>
-                <address className="mt-2 not-italic leading-relaxed text-cream-dim">
-                  {contact.address.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </address>
-              </div>
-
-              <div>
-                <h3 className="text-xs tracking-widest text-sand">טלפון</h3>
-                <ul className="mt-2 space-y-2">
-                  {contact.phones.map((phone) => (
-                    <li key={phone.href}>
-                      <span className="block text-xs text-cream-dim/70">
-                        {phone.owner}
-                      </span>
-                      <a
-                        href={`tel:${phone.href}`}
-                        className="block text-cream-dim transition-colors hover:text-cream"
-                        dir="ltr"
-                      >
-                        <span className="block text-right">
-                          {phone.display}
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xs tracking-widest text-sand">אימייל</h3>
-                <ul className="mt-2 space-y-2">
-                  {contact.emails.map((email) => (
-                    <li key={email.address}>
-                      <span className="block text-xs text-cream-dim/70">
-                        {email.owner}
-                      </span>
-                      <a
-                        href={`mailto:${email.address}`}
-                        className="block text-cream-dim transition-colors hover:text-cream"
-                        dir="ltr"
-                      >
-                        <span className="block text-right">
-                          {email.address}
-                        </span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-
-            </div>
-          </div>
-
-          {/* במקום טופס — פנייה ישירה בוואטסאפ, שמגיעה מיד ולא לתיבת דואר. */}
-          <div className="rounded-sm border border-ink-line bg-ink-soft p-7 sm:p-9">
-            <h2 className="font-display text-2xl font-light text-cream">
-              דברו איתנו בוואטסאפ
-            </h2>
-            <p className="mt-3 leading-relaxed text-cream-dim">
-              הדרך המהירה ביותר להגיע אלינו. בחרו למי לפנות ונחזור אליכם בהקדם.
-            </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {contact.phones.map((phone) => (
-                <WhatsAppButton
-                  key={phone.href}
-                  number={phone.whatsapp}
-                  owner={phone.owner}
-                  size="large"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
-    </>
+    </section>
   );
 }

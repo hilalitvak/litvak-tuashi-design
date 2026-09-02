@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PageBanner } from "@/components/page-banner";
 import { ButtonLink, Section } from "@/components/ui";
 import {
-  STUDIO_NAME_EN,
+  STUDIO_NAME_FULL,
   TAGLINE,
   banners,
   founders,
@@ -26,13 +26,14 @@ export default function AboutPage() {
       <Section>
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-lg leading-relaxed text-cream/90">
-            {STUDIO_NAME_EN} הוקם ב-2012 על ידי סיגל ליטבק ובן טואשי — שני
+            {STUDIO_NAME_FULL} הוקם ב-2012 על ידי סיגל ליטבק ובן טואשי. שני
             מעצבים בעלי סגנונות שונים אך משלימים, מתוך חזון משותף ליצור מרחבים
             שמבטאים ייחודיות, הרמוניה ופונקציונליות אמיתית.
           </p>
           <p className="mt-6 leading-relaxed text-cream-dim">
             מה שהתחיל כסטודיו קטן התפתח למשרד עיצוב הפעיל בפרויקטים ברחבי הארץ
             ובעולם — דירות, בתים פרטיים, פנטהאוזים, משרדים וחללים מסחריים.
+            הסטודיו ממוקם בחולון.
           </p>
         </div>
       </Section>
