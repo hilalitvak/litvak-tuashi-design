@@ -6,7 +6,9 @@ export const IMAGE_BASE =
 
 /**
  * שם קובץ באחסון → כתובת מלאה.
- * מקבל גם כתובת מלאה, כדי שתמונה שהועלתה דרך הפורטל תעבוד כמו שהיא.
+ *
+ * עובר כמו שהוא על כתובת מלאה (תמונה שהועלתה דרך הפורטל) ועל נתיב
+ * שמתחיל ב-/ (קובץ מקומי ב-public, כמו תמונת ההירו).
  */
 export const img = (name: string) =>
-  name.startsWith("http") ? name : IMAGE_BASE + name;
+  name.startsWith("http") || name.startsWith("/") ? name : IMAGE_BASE + name;

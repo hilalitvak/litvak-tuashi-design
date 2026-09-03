@@ -127,7 +127,7 @@ export const processSteps = [
 
 /** באנרים לראשי העמודים. שמות קבצים באחסון (ראו IMAGE_BASE ב-portfolio.ts). */
 export const banners = {
-  home: "08bac0737_home_banner.jpg",
+  home: "/hero.jpg",
   projects: "929da58d4_projects_banner.jpg",
   about: "becd911ef_about_banner.jpg",
   process: "b4a5c3a77_our_process_banner.jpg",

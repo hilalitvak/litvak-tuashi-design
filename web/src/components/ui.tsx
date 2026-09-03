@@ -6,12 +6,17 @@ import type { PortfolioProject } from "@/lib/portfolio";
 export function Section({
   children,
   className = "",
+  id,
 }: {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }) {
   return (
-    <section className={`mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 ${className}`}>
+    <section
+      id={id}
+      className={`mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 ${className}`}
+    >
       {children}
     </section>
   );
