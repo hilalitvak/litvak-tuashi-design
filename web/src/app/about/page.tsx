@@ -55,6 +55,7 @@ export default function AboutPage() {
                     alt={person.name}
                     fill
                     sizes="160px"
+                    style={{ objectPosition: person.photoPosition }}
                     className="object-cover"
                   />
                 ) : (
