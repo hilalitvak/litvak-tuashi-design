@@ -31,6 +31,8 @@ export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
     .from("portfolio_projects")
     .select(COLUMNS)
     .eq("status", "active")
+    // מובחרים קודם, ובתוך כל קבוצה לפי הסדר שנקבע בפורטל.
+    .order("is_featured", { ascending: false })
     .order("sort_order", { ascending: false });
 
   if (error) {
@@ -38,11 +40,6 @@ export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
     return [];
   }
   return (data as PortfolioProject[]) ?? [];
-}
-
-export async function getFeaturedProjects(): Promise<PortfolioProject[]> {
-  const all = await getPortfolioProjects();
-  return all.filter((p) => p.is_featured);
 }
 
 export async function getProject(

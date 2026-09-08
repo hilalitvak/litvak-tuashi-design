@@ -30,7 +30,7 @@ export function SiteHeader() {
           : "bg-gradient-to-b from-ink/80 to-transparent"
       }`}
     >
-      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+      <div className="mx-auto flex h-28 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link
           href="/"
           className="shrink-0"
@@ -43,7 +43,7 @@ export function SiteHeader() {
             width={470}
             height={170}
             priority
-            className="h-12 w-auto sm:h-14"
+            className="h-16 w-auto sm:h-20"
           />
         </Link>
 

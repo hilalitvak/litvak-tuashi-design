@@ -30,7 +30,7 @@ export default async function PortfolioAdminPage() {
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-cream-dim">
           מה שמופיע כאן הוא מה שהמבקרים באתר רואים. פרויקט חדש נוצר כטיוטה
           ואינו מוצג עד שתפרסמו אותו — כך אפשר להעלות תמונות בשקט לפני שהוא
-          עולה לאוויר.
+          עולה לאוויר. פרויקטים מסומנים כ"מובחר" מופיעים ראשונים ברשימה.
         </p>
       </div>
 
