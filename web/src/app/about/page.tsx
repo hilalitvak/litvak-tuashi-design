@@ -30,14 +30,13 @@ export default function AboutPage() {
       <div className="mt-14 grid gap-10 sm:grid-cols-2">
         {founders.map((person) => (
           <article key={person.name} className="flex gap-5">
-            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-rule bg-panel">
+            <div className="relative h-32 w-32 shrink-0 overflow-hidden rounded-sm border border-rule bg-panel">
               {person.photo ? (
                 <Image
                   src={person.photo}
                   alt={person.name}
                   fill
-                  sizes="112px"
-                  style={{ objectPosition: person.photoPosition }}
+                  sizes="128px"
                   className="object-cover"
                 />
               ) : (
