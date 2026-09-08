@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: Params) {
         <div className="banner-veil absolute inset-0" />
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8">
           <Link
-            href="/projects"
+            href="/#projects"
             className="text-sm text-canvas/75 transition-colors hover:text-canvas"
           >
             ← חזרה לכל הפרויקטים
@@ -115,7 +115,7 @@ export default async function ProjectPage({ params }: Params) {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <ButtonLink href="/contact">צרו קשר</ButtonLink>
-            <ButtonLink href="/projects" variant="outline">
+            <ButtonLink href="/#projects" variant="outline">
               עוד פרויקטים
             </ButtonLink>
           </div>

@@ -14,6 +14,9 @@ export default function ContactPage() {
   return (
     // עמוד אחד, מסך אחד. הוואטסאפ במרכז כי זו הפנייה שבאמת קורית;
     // הטלפון והמייל מתחתיו למי שמעדיף, והמיקום בשוליים.
+    //
+    // כל הכיתוב כאן לבן במפורש ולא דרך טוקני הערכה הבהירה: הוא יושב
+    // על צילום מוכהה, וטקסט בצבע הדיו של גוף האתר פשוט נבלע בו.
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-24">
       <Image
         src={img(banners.contact)}
@@ -24,13 +27,13 @@ export default function ContactPage() {
         className="object-cover"
       />
       {/* שכבה כהה וכבדה — הרקע הוא אווירה, לא נושא. */}
-      <div className="absolute inset-0 bg-ink/75" />
+      <div className="absolute inset-0 bg-[#141210]/80" />
 
       <div className="relative mx-auto w-full max-w-xl px-5 py-20 text-center sm:px-8">
-        <h1 className="font-display text-4xl font-light text-canvas sm:text-5xl">
+        <h1 className="font-display text-4xl font-light text-white sm:text-5xl">
           דברו איתנו
         </h1>
-        <p className="mx-auto mt-4 max-w-md leading-relaxed text-canvas-soft">
+        <p className="mx-auto mt-4 max-w-md leading-relaxed text-white/85">
           הדרך המהירה ביותר להגיע אלינו. בחרו למי לפנות ונחזור אליכם בהקדם.
         </p>
 
@@ -50,12 +53,12 @@ export default function ContactPage() {
             const email = contact.emails.find((e) => e.owner === phone.owner);
             return (
               <div key={phone.href}>
-                <p className="text-xs tracking-widest text-brass">
+                <p className="text-xs tracking-widest text-sand">
                   {phone.owner}
                 </p>
                 <a
                   href={`tel:${phone.href}`}
-                  className="mt-2 block text-sm text-canvas-soft transition-colors hover:text-canvas"
+                  className="mt-2 block text-sm text-white transition-colors hover:text-sand"
                   dir="ltr"
                 >
                   {phone.display}
@@ -63,7 +66,7 @@ export default function ContactPage() {
                 {email && (
                   <a
                     href={`mailto:${email.address}`}
-                    className="mt-1 block text-sm text-canvas-soft transition-colors hover:text-canvas"
+                    className="mt-1 block text-sm text-white transition-colors hover:text-sand"
                     dir="ltr"
                   >
                     {email.address}
@@ -74,7 +77,7 @@ export default function ContactPage() {
           })}
         </div>
 
-        <p className="mt-14 text-sm text-canvas-soft/70">
+        <p className="mt-14 text-sm text-white/70">
           {contact.address.join(", ")}
         </p>
       </div>

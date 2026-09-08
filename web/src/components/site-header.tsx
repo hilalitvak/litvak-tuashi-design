@@ -24,7 +24,7 @@ export function SiteHeader() {
   // רק חלק מהעמודים נפתחים בצילום מלא־רוחב. שם הכותרת שקופה ובהירה;
   // בשאר (אודות, כניסה, משפטיים) היא יושבת ישר על רקע בהיר, ואם לא
   // נבדיל — הלוגו הלבן והניווט הלבן פשוט נעלמים.
-  const heroPages = ["/", "/projects", "/process", "/contact"];
+  const heroPages = ["/", "/process", "/contact"];
   const hasHero =
     heroPages.includes(pathname) || pathname.startsWith("/projects/");
   const onImage = hasHero && !scrolled && !open;
@@ -55,8 +55,11 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-8 md:flex">
           {nav.map((item) => {
-            const active =
-              item.href === "/"
+            // קישורי עוגן ("/#projects") גוללים בתוך עמוד הבית ואינם
+            // עמוד נפרד — אין להם מצב "פעיל".
+            const active = item.href.includes("#")
+              ? false
+              : item.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(item.href);
             return (
