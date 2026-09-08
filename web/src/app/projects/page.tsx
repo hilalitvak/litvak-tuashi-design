@@ -30,12 +30,12 @@ export default async function ProjectsPage() {
         </div>
       </Section>
 
-      <section className="border-t border-ink-line bg-ink-soft">
+      <section className="border-t border-rule bg-panel">
         <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8">
-          <h2 className="font-display text-3xl font-light text-cream sm:text-4xl">
+          <h2 className="font-display text-3xl font-light text-ink sm:text-4xl">
             מוכנים ליצור את הסיפור שלכם?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-cream-dim">
+          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink-soft">
             בואו נעבוד יחד כדי להפוך את החלל שלכם למשהו יוצא דופן
           </p>
           <div className="mt-10">

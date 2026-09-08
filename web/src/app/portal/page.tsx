@@ -38,10 +38,10 @@ export default async function PortalHome() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl font-light text-cream">
+          <h1 className="font-display text-3xl font-light text-ink">
             {isAdmin ? "הפרויקטים" : "הפרויקטים שלי"}
           </h1>
-          <p className="mt-2 text-sm text-cream-dim">
+          <p className="mt-2 text-sm text-ink-soft">
             {isAdmin
               ? `${projects.length} פרויקטים במערכת`
               : "לחצו על פרויקט כדי לראות את הקבצים והתקדמות העבודה"}
@@ -56,7 +56,7 @@ export default async function PortalHome() {
       )}
 
       {projects.length === 0 ? (
-        <p className="mt-10 rounded-sm border border-ink-line bg-ink-soft px-6 py-10 text-center text-cream-dim">
+        <p className="mt-10 rounded-sm border border-rule bg-panel px-6 py-10 text-center text-ink-soft">
           {isAdmin
             ? "עדיין אין פרויקטים. צרו את הראשון למעלה — שבע ספריות ייווצרו לו אוטומטית."
             : "עדיין לא שויך אליכם פרויקט. סיגל או בן ישייכו אתכם בקרוב."}
@@ -67,18 +67,18 @@ export default async function PortalHome() {
             <li key={p.id}>
               <Link
                 href={`/portal/projects/${p.id}`}
-                className="block rounded-sm border border-ink-line bg-ink-soft p-6 transition-colors hover:border-sand"
+                className="block rounded-sm border border-rule bg-panel p-6 transition-colors hover:border-brass"
               >
                 <div className="flex items-start justify-between gap-3">
-                  <h2 className="font-display text-xl font-light text-cream">
+                  <h2 className="font-display text-xl font-light text-ink">
                     {p.title}
                   </h2>
-                  <span className="shrink-0 rounded-sm border border-ink-line px-2 py-0.5 text-xs text-sand">
+                  <span className="shrink-0 rounded-sm border border-rule px-2 py-0.5 text-xs text-brass">
                     {STATUS_LABELS[p.status] ?? p.status}
                   </span>
                 </div>
 
-                <dl className="mt-4 space-y-1 text-sm text-cream-dim">
+                <dl className="mt-4 space-y-1 text-sm text-ink-soft">
                   {p.client_name && (
                     <div className="flex gap-2">
                       <dt>לקוח:</dt>

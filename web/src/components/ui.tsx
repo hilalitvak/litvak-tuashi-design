@@ -15,7 +15,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 ${className}`}
+      className={`mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16 ${className}`}
     >
       {children}
     </section>
@@ -34,13 +34,13 @@ export function SectionHeading({
   return (
     <div className="mx-auto max-w-2xl text-center">
       {eyebrow && (
-        <p className="text-xs tracking-[0.25em] text-sand">{eyebrow}</p>
+        <p className="text-xs tracking-[0.25em] text-brass">{eyebrow}</p>
       )}
-      <h2 className="mt-3 font-display text-3xl font-light text-cream sm:text-4xl">
+      <h2 className="mt-3 font-display text-3xl font-light text-ink sm:text-4xl">
         {title}
       </h2>
       {body && (
-        <p className="mt-5 text-base leading-relaxed text-cream-dim">{body}</p>
+        <p className="mt-5 text-base leading-relaxed text-ink-soft">{body}</p>
       )}
     </div>
   );
@@ -50,17 +50,23 @@ export function ButtonLink({
   href,
   children,
   variant = "solid",
+  onDark = false,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: "solid" | "outline";
+  /** כפתורים שיושבים על צילום — הערכה הבהירה לא נראית שם. */
+  onDark?: boolean;
 }) {
   const base =
     "inline-flex items-center justify-center rounded-sm px-7 py-3 text-sm tracking-wide transition-colors";
-  const styles =
-    variant === "solid"
-      ? "bg-cream text-ink hover:bg-sand"
-      : "border border-cream/40 text-cream hover:border-sand hover:text-sand";
+  const styles = onDark
+    ? variant === "solid"
+      ? "bg-white text-ink hover:bg-brass hover:text-white"
+      : "border border-white/50 text-white hover:border-white hover:bg-white/10"
+    : variant === "solid"
+      ? "bg-ink text-canvas hover:bg-brass"
+      : "border border-rule text-ink hover:border-brass hover:text-brass";
   return (
     <Link href={href} className={`${base} ${styles}`}>
       {children}
@@ -72,7 +78,7 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group relative block overflow-hidden rounded-sm bg-ink-soft"
+      className="group relative block overflow-hidden rounded-sm bg-panel"
     >
       <div className="relative aspect-4/3 overflow-hidden">
         <Image
@@ -86,13 +92,13 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-6">
-        <h3 className="font-display text-xl font-light text-cream">
+        <h3 className="font-display text-xl font-light text-canvas">
           {project.title}
         </h3>
         {project.location && (
-          <p className="mt-1 text-sm text-cream-dim">{project.location}</p>
+          <p className="mt-1 text-sm text-canvas/75">{project.location}</p>
         )}
-        <span className="mt-3 inline-block text-xs tracking-widest text-sand opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <span className="mt-3 inline-block text-xs tracking-widest text-canvas opacity-0 transition-opacity duration-300 group-hover:opacity-100">
           צפה בפרויקט ←
         </span>
       </div>

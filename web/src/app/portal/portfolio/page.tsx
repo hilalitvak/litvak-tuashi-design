@@ -18,16 +18,16 @@ export default async function PortfolioAdminPage() {
     <div>
       <Link
         href="/portal"
-        className="text-sm text-cream-dim transition-colors hover:text-cream"
+        className="text-sm text-ink-soft transition-colors hover:text-ink"
       >
         ← לפורטל
       </Link>
 
       <div className="mt-5">
-        <h1 className="font-display text-3xl font-light text-cream">
+        <h1 className="font-display text-3xl font-light text-ink">
           תיק העבודות
         </h1>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-cream-dim">
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
           מה שמופיע כאן הוא מה שהמבקרים באתר רואים. פרויקט חדש נוצר כטיוטה
           ואינו מוצג עד שתפרסמו אותו — כך אפשר להעלות תמונות בשקט לפני שהוא
           עולה לאוויר. פרויקטים מסומנים כ"מובחר" מופיעים ראשונים ברשימה.

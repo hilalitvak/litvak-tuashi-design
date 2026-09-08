@@ -64,29 +64,29 @@ export default async function ProjectPage({
     <div>
       <Link
         href="/portal"
-        className="text-sm text-cream-dim transition-colors hover:text-cream"
+        className="text-sm text-ink-soft transition-colors hover:text-ink"
       >
         ← לכל הפרויקטים
       </Link>
 
       <div className="mt-5 flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="font-display text-3xl font-light text-cream">
+          <h1 className="font-display text-3xl font-light text-ink">
             {p.title}
           </h1>
-          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-cream-dim">
+          <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-ink-soft">
             {p.client_name && <span>{p.client_name}</span>}
             {(p.location || p.address) && <span>{p.location || p.address}</span>}
             <span>נפתח {formatDate(p.created_at)}</span>
           </div>
         </div>
-        <span className="rounded-sm border border-ink-line px-3 py-1 text-xs text-sand">
+        <span className="rounded-sm border border-rule px-3 py-1 text-xs text-brass">
           {STATUS_LABELS[p.status] ?? p.status}
         </span>
       </div>
 
       {p.description && (
-        <p className="mt-5 max-w-2xl leading-relaxed text-cream-dim">
+        <p className="mt-5 max-w-2xl leading-relaxed text-ink-soft">
           {p.description}
         </p>
       )}

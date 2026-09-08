@@ -28,20 +28,20 @@ export default async function PortalLayout({
   const isAdmin = profile.role === "admin";
 
   return (
-    <div className="min-h-screen bg-ink">
-      <header className="sticky top-0 z-40 border-b border-ink-line bg-ink/95 backdrop-blur">
+    <div className="min-h-screen bg-canvas">
+      <header className="sticky top-0 z-40 border-b border-rule bg-canvas/95 backdrop-blur">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
           <div className="flex items-center gap-5">
-            <Link href="/portal" className="font-display text-cream">
+            <Link href="/portal" className="font-display text-ink">
               {STUDIO_NAME}
             </Link>
-            <span className="rounded-sm border border-ink-line px-2 py-0.5 text-xs text-sand">
+            <span className="rounded-sm border border-rule px-2 py-0.5 text-xs text-brass">
               {isAdmin ? "ניהול" : "פורטל לקוח"}
             </span>
             {isAdmin && (
               <Link
                 href="/portal/portfolio"
-                className="text-sm text-cream-dim transition-colors hover:text-cream"
+                className="text-sm text-ink-soft transition-colors hover:text-ink"
               >
                 תיק העבודות
               </Link>
@@ -50,12 +50,12 @@ export default async function PortalLayout({
 
           <div className="flex items-center gap-3">
             {isAdmin && <NotificationsBell />}
-            <span className="hidden text-sm text-cream-dim sm:inline">
+            <span className="hidden text-sm text-ink-soft sm:inline">
               {profile.full_name || profile.email}
             </span>
             <Link
               href="/"
-              className="text-sm text-cream-dim transition-colors hover:text-cream"
+              className="text-sm text-ink-soft transition-colors hover:text-ink"
             >
               לאתר
             </Link>

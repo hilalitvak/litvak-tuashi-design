@@ -16,7 +16,7 @@ import {
 } from "./actions";
 
 const field =
-  "w-full rounded-sm border border-ink-line bg-ink px-4 py-2.5 text-sm text-cream outline-none transition-colors placeholder:text-cream-dim/50 focus:border-sand";
+  "w-full rounded-sm border border-rule bg-canvas px-4 py-2.5 text-sm text-ink outline-none transition-colors placeholder:text-ink-soft/50 focus:border-brass";
 
 function Submit({ label }: { label: string }) {
   const { pending } = useFormStatus();
@@ -24,7 +24,7 @@ function Submit({ label }: { label: string }) {
     <button
       type="submit"
       disabled={pending}
-      className="rounded-sm bg-cream px-6 py-2.5 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-60"
+      className="rounded-sm bg-ink px-6 py-2.5 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-60"
     >
       {pending ? "שומר…" : label}
     </button>
@@ -69,11 +69,11 @@ export function PortfolioManager({
         <button
           type="button"
           onClick={() => setAdding((v) => !v)}
-          className="rounded-sm border border-ink-line px-5 py-2.5 text-sm text-cream transition-colors hover:border-sand hover:text-sand"
+          className="rounded-sm border border-rule px-5 py-2.5 text-sm text-ink transition-colors hover:border-brass hover:text-brass"
         >
           {adding ? "ביטול" : "+ פרויקט חדש"}
         </button>
-        <span className="text-sm text-cream-dim">
+        <span className="text-sm text-ink-soft">
           {projects.filter((p) => p.status === "active").length} מוצגים ·{" "}
           {projects.filter((p) => p.status !== "active").length} טיוטות
         </span>
@@ -82,23 +82,23 @@ export function PortfolioManager({
       {adding && (
         <form
           action={action}
-          className="mt-5 rounded-sm border border-ink-line bg-ink-soft p-6"
+          className="mt-5 rounded-sm border border-rule bg-panel p-6"
         >
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label htmlFor="title" className="mb-1.5 block text-xs text-cream-dim">
-                שם הפרויקט <span className="text-sand">*</span>
+              <label htmlFor="title" className="mb-1.5 block text-xs text-ink-soft">
+                שם הפרויקט <span className="text-brass">*</span>
               </label>
               <input id="title" name="title" required maxLength={200} className={field} />
             </div>
             <div>
-              <label htmlFor="location" className="mb-1.5 block text-xs text-cream-dim">
+              <label htmlFor="location" className="mb-1.5 block text-xs text-ink-soft">
                 מיקום
               </label>
               <input id="location" name="location" maxLength={200} className={field} />
             </div>
             <div>
-              <label htmlFor="category" className="mb-1.5 block text-xs text-cream-dim">
+              <label htmlFor="category" className="mb-1.5 block text-xs text-ink-soft">
                 קטגוריה
               </label>
               <select id="category" name="category" className={field}>
@@ -108,7 +108,7 @@ export function PortfolioManager({
               </select>
             </div>
             <div>
-              <label htmlFor="slug" className="mb-1.5 block text-xs text-cream-dim">
+              <label htmlFor="slug" className="mb-1.5 block text-xs text-ink-soft">
                 כתובת באתר (אנגלית, אופציונלי)
               </label>
               <input
@@ -122,14 +122,14 @@ export function PortfolioManager({
             </div>
           </div>
           <div className="mt-4">
-            <label htmlFor="description" className="mb-1.5 block text-xs text-cream-dim">
+            <label htmlFor="description" className="mb-1.5 block text-xs text-ink-soft">
               תיאור
             </label>
             <textarea id="description" name="description" rows={3} maxLength={2000} className={field} />
           </div>
 
           {(state.error || state.ok) && (
-            <p className={`mt-4 text-sm ${state.error ? "text-red-400" : "text-sand"}`}>
+            <p className={`mt-4 text-sm ${state.error ? "text-red-400" : "text-brass"}`}>
               {state.error ?? state.ok}
             </p>
           )}
@@ -144,7 +144,7 @@ export function PortfolioManager({
         <p
           role="status"
           className={`mt-5 rounded-sm border px-4 py-2.5 text-sm ${
-            msg.bad ? "border-red-500/50 text-red-400" : "border-sand/50 text-sand"
+            msg.bad ? "border-red-500/50 text-red-400" : "border-brass/50 text-brass"
           }`}
         >
           {msg.text}
@@ -155,10 +155,10 @@ export function PortfolioManager({
         {projects.map((p, i) => (
           <li
             key={p.id}
-            className="rounded-sm border border-ink-line bg-ink-soft"
+            className="rounded-sm border border-rule bg-panel"
           >
             <div className="flex flex-wrap items-center gap-4 p-4">
-              <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm bg-ink">
+              <div className="relative h-16 w-24 shrink-0 overflow-hidden rounded-sm bg-canvas">
                 {p.banner_image && (
                   <Image
                     src={img(p.banner_image)}
@@ -172,19 +172,19 @@ export function PortfolioManager({
 
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
-                  <h2 className="text-cream">{p.title}</h2>
+                  <h2 className="text-ink">{p.title}</h2>
                   {p.status !== "active" && (
-                    <span className="rounded-sm border border-ink-line px-2 py-0.5 text-xs text-cream-dim">
+                    <span className="rounded-sm border border-rule px-2 py-0.5 text-xs text-ink-soft">
                       טיוטה
                     </span>
                   )}
                   {p.is_featured && (
-                    <span className="rounded-sm border border-sand/50 px-2 py-0.5 text-xs text-sand">
+                    <span className="rounded-sm border border-brass/50 px-2 py-0.5 text-xs text-brass">
                       מובחר
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-cream-dim">
+                <p className="mt-1 text-xs text-ink-soft">
                   {p.location || "—"} · {p.gallery.length} תמונות ·{" "}
                   <span dir="ltr">/{p.slug}</span>
                 </p>
@@ -196,7 +196,7 @@ export function PortfolioManager({
                   disabled={busy || i === 0}
                   onClick={() => run(() => reorderProject(p.id, "up"))}
                   aria-label="הזז למעלה"
-                  className="grid h-8 w-8 place-items-center rounded-sm border border-ink-line text-cream-dim transition-colors hover:text-cream disabled:opacity-30"
+                  className="grid h-8 w-8 place-items-center rounded-sm border border-rule text-ink-soft transition-colors hover:text-ink disabled:opacity-30"
                 >
                   ↑
                 </button>
@@ -205,14 +205,14 @@ export function PortfolioManager({
                   disabled={busy || i === projects.length - 1}
                   onClick={() => run(() => reorderProject(p.id, "down"))}
                   aria-label="הזז למטה"
-                  className="grid h-8 w-8 place-items-center rounded-sm border border-ink-line text-cream-dim transition-colors hover:text-cream disabled:opacity-30"
+                  className="grid h-8 w-8 place-items-center rounded-sm border border-rule text-ink-soft transition-colors hover:text-ink disabled:opacity-30"
                 >
                   ↓
                 </button>
                 <button
                   type="button"
                   onClick={() => setOpen(open === p.id ? null : p.id)}
-                  className="rounded-sm border border-ink-line px-3 py-1.5 text-xs text-cream-dim transition-colors hover:text-cream"
+                  className="rounded-sm border border-rule px-3 py-1.5 text-xs text-ink-soft transition-colors hover:text-ink"
                 >
                   {open === p.id ? "סגור" : "עריכה"}
                 </button>
@@ -289,7 +289,7 @@ function ProjectEditor({
   const canPublish = project.gallery.length > 0 && project.banner_image;
 
   return (
-    <div className="border-t border-ink-line p-5">
+    <div className="border-t border-rule p-5">
       <div className="flex flex-wrap gap-2">
         <input
           ref={inputRef}
@@ -303,7 +303,7 @@ function ProjectEditor({
           type="button"
           disabled={busy || !!uploading}
           onClick={() => inputRef.current?.click()}
-          className="rounded-sm bg-cream px-4 py-2 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-50"
+          className="rounded-sm bg-ink px-4 py-2 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-50"
         >
           {uploading ?? "הוספת תמונות"}
         </button>
@@ -318,7 +318,7 @@ function ProjectEditor({
               })
             )
           }
-          className="rounded-sm border border-ink-line px-4 py-2 text-sm text-cream-dim transition-colors hover:text-cream disabled:opacity-50"
+          className="rounded-sm border border-rule px-4 py-2 text-sm text-ink-soft transition-colors hover:text-ink disabled:opacity-50"
         >
           {project.is_featured ? "הסר ממובחרים" : "סמן כמובחר"}
         </button>
@@ -338,7 +338,7 @@ function ProjectEditor({
               })
             )
           }
-          className="rounded-sm border border-ink-line px-4 py-2 text-sm text-cream-dim transition-colors hover:text-cream disabled:opacity-40"
+          className="rounded-sm border border-rule px-4 py-2 text-sm text-ink-soft transition-colors hover:text-ink disabled:opacity-40"
         >
           {project.status === "active" ? "הסתר מהאתר" : "פרסם באתר"}
         </button>
@@ -354,7 +354,7 @@ function ProjectEditor({
             )
               run(() => deletePortfolioProject(project.id));
           }}
-          className="rounded-sm border border-ink-line px-4 py-2 text-sm text-red-400/80 transition-colors hover:text-red-400 disabled:opacity-50"
+          className="rounded-sm border border-rule px-4 py-2 text-sm text-red-400/80 transition-colors hover:text-red-400 disabled:opacity-50"
         >
           מחיקה
         </button>
@@ -362,7 +362,7 @@ function ProjectEditor({
 
       {project.gallery.length > 0 && (
         <>
-          <p className="mt-5 text-xs text-cream-dim">
+          <p className="mt-5 text-xs text-ink-soft">
             לחיצה על תמונה הופכת אותה לתמונת השער.
           </p>
           <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-6">
@@ -378,13 +378,13 @@ function ProjectEditor({
                 }
                 className={`relative aspect-square overflow-hidden rounded-sm border-2 transition-colors ${
                   name === project.banner_image
-                    ? "border-sand"
-                    : "border-transparent hover:border-ink-line"
+                    ? "border-brass"
+                    : "border-transparent hover:border-rule"
                 }`}
               >
                 <Image src={img(name)} alt="" fill sizes="120px" className="object-cover" />
                 {name === project.banner_image && (
-                  <span className="absolute inset-x-0 bottom-0 bg-sand/90 py-0.5 text-[10px] text-ink">
+                  <span className="absolute inset-x-0 bottom-0 bg-brass/90 py-0.5 text-[10px] text-ink">
                     שער
                   </span>
                 )}

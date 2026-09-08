@@ -130,8 +130,8 @@ export function FileBrowser({
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h2 className="font-display text-2xl font-light text-cream">קבצים</h2>
-          <p className="mt-1 text-sm text-cream-dim">
+          <h2 className="font-display text-2xl font-light text-ink">קבצים</h2>
+          <p className="mt-1 text-sm text-ink-soft">
             {isAdmin
               ? "אפשר להוסיף ספריות, לשנות שמות, להעביר קבצים ולמחוק."
               : inbox
@@ -147,7 +147,7 @@ export function FileBrowser({
               const name = window.prompt("שם הספרייה החדשה:");
               if (name) run(() => addFolder(projectId, name));
             }}
-            className="rounded-sm border border-ink-line px-4 py-2 text-sm text-cream transition-colors hover:border-sand hover:text-sand disabled:opacity-50"
+            className="rounded-sm border border-rule px-4 py-2 text-sm text-ink transition-colors hover:border-brass hover:text-brass disabled:opacity-50"
           >
             + ספרייה
           </button>
@@ -160,7 +160,7 @@ export function FileBrowser({
           className={`mt-4 rounded-sm border px-4 py-2.5 text-sm ${
             msg.bad
               ? "border-red-500/50 text-red-400"
-              : "border-sand/50 text-sand"
+              : "border-brass/50 text-brass"
           }`}
         >
           {msg.text}
@@ -180,17 +180,17 @@ export function FileBrowser({
                     onClick={() => setActive(f.id)}
                     className={`flex w-full items-center justify-between gap-2 rounded-sm px-3 py-2.5 text-right text-sm transition-colors ${
                       active === f.id
-                        ? "bg-ink-soft text-cream"
-                        : "text-cream-dim hover:bg-ink-soft/60 hover:text-cream"
+                        ? "bg-panel text-ink"
+                        : "text-ink-soft hover:bg-panel/60 hover:text-ink"
                     }`}
                   >
                     <span className="truncate">
                       {f.name}
                       {f.is_client_inbox && (
-                        <span className="mr-1.5 text-xs text-sand">●</span>
+                        <span className="mr-1.5 text-xs text-brass">●</span>
                       )}
                     </span>
-                    <span className="shrink-0 text-xs text-cream-dim/70">
+                    <span className="shrink-0 text-xs text-ink-soft/70">
                       {count}
                     </span>
                   </button>
@@ -199,17 +199,17 @@ export function FileBrowser({
             })}
           </ul>
           {inbox && (
-            <p className="mt-4 px-3 text-xs leading-relaxed text-cream-dim/70">
-              <span className="text-sand">●</span> תיבת ההעלאות — הספרייה שדרכה
+            <p className="mt-4 px-3 text-xs leading-relaxed text-ink-soft/70">
+              <span className="text-brass">●</span> תיבת ההעלאות — הספרייה שדרכה
               הלקוח מעלה קבצים.
             </p>
           )}
         </nav>
 
         {/* תוכן הספרייה */}
-        <div className="rounded-sm border border-ink-line bg-ink-soft">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-line px-5 py-4">
-            <h3 className="text-cream">{activeFolder?.name ?? "—"}</h3>
+        <div className="rounded-sm border border-rule bg-panel">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-rule px-5 py-4">
+            <h3 className="text-ink">{activeFolder?.name ?? "—"}</h3>
 
             <div className="flex items-center gap-2">
               {canUploadHere && (
@@ -225,7 +225,7 @@ export function FileBrowser({
                     type="button"
                     disabled={busy}
                     onClick={() => inputRef.current?.click()}
-                    className="rounded-sm bg-cream px-4 py-2 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-50"
+                    className="rounded-sm bg-ink px-4 py-2 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-50"
                   >
                     {progress ?? "העלאת קבצים"}
                   </button>
@@ -247,7 +247,7 @@ export function FileBrowser({
                           renameFolder(projectId, activeFolder.id, name)
                         );
                     }}
-                    className="rounded-sm border border-ink-line px-3 py-2 text-xs text-cream-dim transition-colors hover:text-cream disabled:opacity-50"
+                    className="rounded-sm border border-rule px-3 py-2 text-xs text-ink-soft transition-colors hover:text-ink disabled:opacity-50"
                   >
                     שינוי שם
                   </button>
@@ -265,7 +265,7 @@ export function FileBrowser({
                         )
                           run(() => setClientInbox(projectId, activeFolder.id));
                       }}
-                      className="rounded-sm border border-ink-line px-3 py-2 text-xs text-cream-dim transition-colors hover:text-cream disabled:opacity-50"
+                      className="rounded-sm border border-rule px-3 py-2 text-xs text-ink-soft transition-colors hover:text-ink disabled:opacity-50"
                     >
                       הפוך לתיבת העלאות
                     </button>
@@ -273,7 +273,7 @@ export function FileBrowser({
                   {activeFolder.is_client_inbox ? (
                     <span
                       title="כדי למחוק ספרייה זו, יש להפוך קודם ספרייה אחרת לתיבת ההעלאות"
-                      className="px-3 py-2 text-xs text-cream-dim/60"
+                      className="px-3 py-2 text-xs text-ink-soft/60"
                     >
                       תיבת ההעלאות — לא ניתנת למחיקה
                     </span>
@@ -296,7 +296,7 @@ export function FileBrowser({
                           setActive(folders[0]?.id ?? null);
                         }
                       }}
-                      className="rounded-sm border border-ink-line px-3 py-2 text-xs text-red-400/80 transition-colors hover:text-red-400 disabled:opacity-50"
+                      className="rounded-sm border border-rule px-3 py-2 text-xs text-red-400/80 transition-colors hover:text-red-400 disabled:opacity-50"
                     >
                       מחיקה
                     </button>
@@ -307,13 +307,13 @@ export function FileBrowser({
           </div>
 
           {visible.length === 0 ? (
-            <p className="px-5 py-12 text-center text-sm text-cream-dim">
+            <p className="px-5 py-12 text-center text-sm text-ink-soft">
               {canUploadHere
                 ? "אין כאן קבצים עדיין."
                 : "אין כאן קבצים."}
             </p>
           ) : (
-            <ul className="divide-y divide-ink-line/60">
+            <ul className="divide-y divide-rule/60">
               {visible.map((file) => (
                 <li
                   key={file.id}
@@ -323,11 +323,11 @@ export function FileBrowser({
                     <button
                       type="button"
                       onClick={() => download(file)}
-                      className="block max-w-full truncate text-right text-sm text-cream transition-colors hover:text-sand"
+                      className="block max-w-full truncate text-right text-sm text-ink transition-colors hover:text-brass"
                     >
                       {file.name}
                     </button>
-                    <p className="mt-0.5 text-xs text-cream-dim">
+                    <p className="mt-0.5 text-xs text-ink-soft">
                       {formatBytes(file.size_bytes)} · {formatDate(file.created_at)}
                     </p>
                   </div>
@@ -343,7 +343,7 @@ export function FileBrowser({
                           )
                         }
                         aria-label={`העברת ${file.name} לספרייה אחרת`}
-                        className="rounded-sm border border-ink-line bg-ink px-2 py-1.5 text-xs text-cream-dim outline-none focus:border-sand"
+                        className="rounded-sm border border-rule bg-canvas px-2 py-1.5 text-xs text-ink-soft outline-none focus:border-brass"
                       >
                         {folders.map((f) => (
                           <option key={f.id} value={f.id}>
@@ -362,7 +362,7 @@ export function FileBrowser({
                           if (name)
                             run(() => renameFile(projectId, file.id, name));
                         }}
-                        className="text-xs text-cream-dim transition-colors hover:text-cream disabled:opacity-50"
+                        className="text-xs text-ink-soft transition-colors hover:text-ink disabled:opacity-50"
                       >
                         שינוי שם
                       </button>

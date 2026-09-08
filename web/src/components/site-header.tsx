@@ -4,14 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { LOGO, STUDIO_NAME_EN, nav } from "@/lib/site";
+import { STUDIO_NAME_EN, nav } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // הכותרת שקופה מעל הבאנר ונאטמת בגלילה, כדי לא להסתיר את הצילום.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -22,23 +21,30 @@ export function SiteHeader() {
   // סגירת התפריט הנייד במעבר בין עמודים.
   useEffect(() => setOpen(false), [pathname]);
 
+  // רק חלק מהעמודים נפתחים בצילום מלא־רוחב. שם הכותרת שקופה ובהירה;
+  // בשאר (אודות, כניסה, משפטיים) היא יושבת ישר על רקע בהיר, ואם לא
+  // נבדיל — הלוגו הלבן והניווט הלבן פשוט נעלמים.
+  const heroPages = ["/", "/projects", "/process", "/contact"];
+  const hasHero =
+    heroPages.includes(pathname) || pathname.startsWith("/projects/");
+  const onImage = hasHero && !scrolled && !open;
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open
-          ? "bg-ink/95 border-b border-ink-line backdrop-blur"
-          : "bg-gradient-to-b from-ink/80 to-transparent"
+        onImage
+          ? "bg-gradient-to-b from-black/45 to-transparent"
+          : "border-b border-rule bg-canvas/95 backdrop-blur"
       }`}
     >
-      <div className="mx-auto flex h-28 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+      <div className="mx-auto flex h-24 max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
         <Link
           href="/"
           className="shrink-0"
           aria-label={`${STUDIO_NAME_EN} — לעמוד הבית`}
         >
-          {/* הלוגו כבר לבן ושקוף בקובץ עצמו, ולכן בלי פילטרים. */}
           <Image
-            src={LOGO}
+            src={onImage ? "/logo-white.png" : "/logo-black.png"}
             alt={STUDIO_NAME_EN}
             width={470}
             height={170}
@@ -59,9 +65,13 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={`text-[15px] tracking-wide transition-colors ${
-                  active
-                    ? "text-sand"
-                    : "text-cream/80 hover:text-cream"
+                  onImage
+                    ? active
+                      ? "text-white"
+                      : "text-white/80 hover:text-white"
+                    : active
+                      ? "text-brass"
+                      : "text-ink-soft hover:text-ink"
                 }`}
               >
                 {item.label}
@@ -73,7 +83,11 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="hidden rounded-sm border border-cream/30 px-5 py-2.5 text-[15px] text-cream transition-colors hover:border-sand hover:text-sand sm:inline-block"
+            className={`hidden rounded-sm border px-5 py-2.5 text-[15px] transition-colors sm:inline-block ${
+              onImage
+                ? "border-white/40 text-white hover:border-white"
+                : "border-rule text-ink hover:border-brass hover:text-brass"
+            }`}
           >
             כניסה לפורטל
           </Link>
@@ -84,7 +98,9 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "סגירת התפריט" : "פתיחת התפריט"}
-            className="grid h-10 w-10 place-items-center text-cream md:hidden"
+            className={`grid h-10 w-10 place-items-center md:hidden ${
+              onImage ? "text-white" : "text-ink"
+            }`}
           >
             <span className="relative block h-4 w-6">
               <span
@@ -110,20 +126,20 @@ export function SiteHeader() {
       {open && (
         <nav
           id="mobile-nav"
-          className="border-t border-ink-line bg-ink px-5 pb-6 pt-2 md:hidden"
+          className="border-t border-rule bg-canvas px-5 pb-6 pt-2 md:hidden"
         >
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="block border-b border-ink-line/60 py-4 text-base text-cream/90"
+              className="block border-b border-rule/60 py-4 text-base text-ink"
             >
               {item.label}
             </Link>
           ))}
           <Link
             href="/login"
-            className="mt-5 block rounded-sm border border-sand px-5 py-3 text-center text-sand"
+            className="mt-5 block rounded-sm border border-brass px-5 py-3 text-center text-brass"
           >
             כניסה לפורטל
           </Link>

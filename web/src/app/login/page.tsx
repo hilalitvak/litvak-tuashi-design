@@ -12,19 +12,19 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-[80vh] max-w-md flex-col justify-center px-5 pb-20 pt-32 sm:px-8">
-      <h1 className="font-display text-3xl font-light text-cream">
+      <h1 className="font-display text-3xl font-light text-ink">
         כניסה לפורטל
       </h1>
-      <p className="mt-3 leading-relaxed text-cream-dim">
+      <p className="mt-3 leading-relaxed text-ink-soft">
         לקוחות רואים את הפרויקט שלהם. סיגל ובן רואים את כל הפרויקטים.
       </p>
 
-      <div className="mt-10 rounded-sm border border-ink-line bg-ink-soft p-7">
+      <div className="mt-10 rounded-sm border border-rule bg-panel p-7">
         <LoginForm configured={isSupabaseConfigured} />
       </div>
 
-      <p className="mt-8 text-center text-sm text-cream-dim">
-        <Link href="/" className="transition-colors hover:text-cream">
+      <p className="mt-8 text-center text-sm text-ink-soft">
+        <Link href="/" className="transition-colors hover:text-ink">
           ← חזרה לאתר
         </Link>
       </p>

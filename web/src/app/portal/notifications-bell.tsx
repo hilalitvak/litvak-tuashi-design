@@ -65,7 +65,7 @@ export function NotificationsBell() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={`התראות${unread ? ` — ${unread} חדשות` : ""}`}
-        className="relative grid h-9 w-9 place-items-center rounded-sm text-cream-dim transition-colors hover:text-cream"
+        className="relative grid h-9 w-9 place-items-center rounded-sm text-ink-soft transition-colors hover:text-ink"
       >
         <svg
           viewBox="0 0 24 24"
@@ -78,21 +78,21 @@ export function NotificationsBell() {
           <path d="M13.7 21a2 2 0 0 1-3.4 0" />
         </svg>
         {unread > 0 && (
-          <span className="absolute right-1 top-1 grid h-4 min-w-4 place-items-center rounded-full bg-sand px-1 text-[10px] font-medium text-ink">
+          <span className="absolute right-1 top-1 grid h-4 min-w-4 place-items-center rounded-full bg-brass px-1 text-[10px] font-medium text-ink">
             {unread}
           </span>
         )}
       </button>
 
       {open && (
-        <div className="absolute left-0 top-11 z-50 w-80 rounded-sm border border-ink-line bg-ink-soft shadow-xl">
-          <div className="flex items-center justify-between border-b border-ink-line px-4 py-3">
-            <span className="text-sm text-cream">התראות</span>
+        <div className="absolute left-0 top-11 z-50 w-80 rounded-sm border border-rule bg-panel shadow-xl">
+          <div className="flex items-center justify-between border-b border-rule px-4 py-3">
+            <span className="text-sm text-ink">התראות</span>
             {unread > 0 && (
               <button
                 type="button"
                 onClick={markAllRead}
-                className="text-xs text-sand hover:underline"
+                className="text-xs text-brass hover:underline"
               >
                 סמן הכל כנקרא
               </button>
@@ -101,27 +101,27 @@ export function NotificationsBell() {
 
           <ul className="max-h-96 overflow-y-auto">
             {items.length === 0 && (
-              <li className="px-4 py-6 text-center text-sm text-cream-dim">
+              <li className="px-4 py-6 text-center text-sm text-ink-soft">
                 אין התראות
               </li>
             )}
             {items.map((n) => (
               <li
                 key={n.id}
-                className={`border-b border-ink-line/60 last:border-0 ${
-                  n.read_at ? "" : "bg-sand/5"
+                className={`border-b border-rule/60 last:border-0 ${
+                  n.read_at ? "" : "bg-brass/5"
                 }`}
               >
                 <Link
                   href={n.project_id ? `/portal/projects/${n.project_id}` : "#"}
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 transition-colors hover:bg-ink"
+                  className="block px-4 py-3 transition-colors hover:bg-canvas"
                 >
-                  <p className="text-sm text-cream">{n.title}</p>
+                  <p className="text-sm text-ink">{n.title}</p>
                   {n.body && (
-                    <p className="mt-1 text-xs text-cream-dim">{n.body}</p>
+                    <p className="mt-1 text-xs text-ink-soft">{n.body}</p>
                   )}
-                  <p className="mt-1 text-[11px] text-cream-dim/70">
+                  <p className="mt-1 text-[11px] text-ink-soft/70">
                     {new Date(n.created_at).toLocaleString("he-IL")}
                   </p>
                 </Link>

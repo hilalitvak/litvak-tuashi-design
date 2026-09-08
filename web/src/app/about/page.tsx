@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { PageBanner } from "@/components/page-banner";
-import { ButtonLink, Section } from "@/components/ui";
-import {
-  STUDIO_NAME_FULL,
-  TAGLINE,
-  banners,
-  founders,
-  values,
-} from "@/lib/site";
+import { ButtonLink } from "@/components/ui";
+import { STUDIO_NAME_FULL, TAGLINE, founders, values } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "אודות",
@@ -18,93 +11,71 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <>
-      <PageBanner image={banners.about} title={TAGLINE} priority />
-
-      {/* הסיפור — שתי פסקאות. המסמך של סיגל ארוך בהרבה, אבל עמוד
-          אודות שדורש גלילה ארוכה פשוט לא נקרא עד הסוף. */}
-      <Section>
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-lg leading-relaxed text-cream/90">
-            {STUDIO_NAME_FULL} הוקם ב-2012 על ידי סיגל ליטבק ובן טואשי. שני
-            מעצבים בעלי סגנונות שונים אך משלימים, מתוך חזון משותף ליצור מרחבים
-            שמבטאים ייחודיות, הרמוניה ופונקציונליות אמיתית.
-          </p>
-          <p className="mt-6 leading-relaxed text-cream-dim">
-            מה שהתחיל כסטודיו קטן התפתח למשרד עיצוב הפעיל בפרויקטים ברחבי הארץ
-            ובעולם — דירות, בתים פרטיים, פנטהאוזים, משרדים וחללים מסחריים.
-            הסטודיו ממוקם בחולון.
-          </p>
-        </div>
-      </Section>
-
-      <div className="rule" />
-
-      <Section>
-        <h2 className="text-center font-display text-3xl font-light text-cream">
+    // בלי באנר תמונה בראש: הוא דחף את התוכן מתחת לקיפול והכריח גלילה
+    // כדי להגיע למה שהעמוד באמת עליו — המעצבים.
+    <div className="mx-auto max-w-5xl px-5 pb-16 pt-32 sm:px-8">
+      <header className="text-center">
+        <p className="text-xs tracking-[0.3em] text-brass">{TAGLINE}</p>
+        <h1 className="mt-4 font-display text-3xl font-light text-ink sm:text-4xl">
           הכירו את המעצבים
-        </h2>
+        </h1>
+        <p className="mx-auto mt-5 max-w-2xl leading-relaxed text-ink-soft">
+          {STUDIO_NAME_FULL} הוקם ב-2012 על ידי סיגל ליטבק ובן טואשי. שני
+          מעצבים בעלי סגנונות שונים אך משלימים, מתוך חזון משותף ליצור מרחבים
+          שמבטאים ייחודיות, הרמוניה ופונקציונליות אמיתית. הסטודיו ממוקם בחולון.
+        </p>
+      </header>
 
-        <div className="mx-auto mt-14 grid max-w-4xl gap-10 sm:grid-cols-2">
-          {founders.map((person) => (
-            <article key={person.name} className="text-center">
-              <div className="relative mx-auto aspect-square w-40 overflow-hidden rounded-full border border-ink-line bg-ink-soft">
-                {person.photo ? (
-                  <Image
-                    src={person.photo}
-                    alt={person.name}
-                    fill
-                    sizes="160px"
-                    style={{ objectPosition: person.photoPosition }}
-                    className="object-cover"
-                  />
-                ) : (
-                  // עד שתגיע תמונה — ראשי תיבות, ולא ריבוע ריק.
-                  <span className="grid h-full w-full place-items-center font-display text-3xl font-light text-cream-dim">
-                    {person.name.charAt(0)}
-                  </span>
-                )}
-              </div>
+      {/* פורטרט וטקסט זה לצד זה — קומפקטי בהרבה מתמונה מעל טקסט. */}
+      <div className="mt-14 grid gap-10 sm:grid-cols-2">
+        {founders.map((person) => (
+          <article key={person.name} className="flex gap-5">
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border border-rule bg-panel">
+              {person.photo ? (
+                <Image
+                  src={person.photo}
+                  alt={person.name}
+                  fill
+                  sizes="112px"
+                  style={{ objectPosition: person.photoPosition }}
+                  className="object-cover"
+                />
+              ) : (
+                <span className="grid h-full w-full place-items-center font-display text-2xl font-light text-ink-soft">
+                  {person.name.charAt(0)}
+                </span>
+              )}
+            </div>
 
-              <h3 className="mt-6 font-display text-2xl font-light text-cream">
+            <div className="min-w-0">
+              <h2 className="font-display text-xl font-light text-ink">
                 {person.name}
-              </h3>
-              <p className="mt-1 text-sm tracking-wide text-sand">
-                {person.role}
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-cream-dim">
+              </h2>
+              <p className="mt-0.5 text-sm text-brass">{person.role}</p>
+              <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                 {person.bio}
               </p>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <div className="rule" />
-
-      <Section>
-        <div className="grid gap-10 sm:grid-cols-3">
-          {values.map((value) => (
-            <div key={value.title}>
-              <h3 className="font-display text-lg text-sand">{value.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-cream-dim">
-                {value.body}
-              </p>
             </div>
-          ))}
-        </div>
-      </Section>
+          </article>
+        ))}
+      </div>
 
-      <section className="border-t border-ink-line bg-ink-soft">
-        <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8">
-          <h2 className="font-display text-3xl font-light text-cream sm:text-4xl">
-            מוכנים להתחיל?
-          </h2>
-          <div className="mt-8">
-            <ButtonLink href="/contact">דברו איתנו</ButtonLink>
+      <div className="rule-line mt-14" />
+
+      <div className="mt-12 grid gap-8 sm:grid-cols-3">
+        {values.map((value) => (
+          <div key={value.title}>
+            <h2 className="font-display text-base text-brass">{value.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+              {value.body}
+            </p>
           </div>
-        </div>
-      </section>
-    </>
+        ))}
+      </div>
+
+      <div className="mt-14 text-center">
+        <ButtonLink href="/contact">דברו איתנו</ButtonLink>
+      </div>
+    </div>
   );
 }

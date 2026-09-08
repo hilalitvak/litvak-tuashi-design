@@ -24,7 +24,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
 
   if (!configured) {
     return (
-      <p className="rounded-sm border border-ink-line bg-ink px-5 py-4 text-sm leading-relaxed text-cream-dim">
+      <p className="rounded-sm border border-rule bg-canvas px-5 py-4 text-sm leading-relaxed text-ink-soft">
         ההתחברות עדיין לא הופעלה — פרויקט Supabase טרם חובר לאתר. האתר הציבורי
         פעיל במלואו בינתיים.
       </p>
@@ -90,11 +90,11 @@ export function LoginForm({ configured }: { configured: boolean }) {
   }
 
   const field =
-    "w-full rounded-sm border border-ink-line bg-ink px-4 py-3 text-cream outline-none transition-colors placeholder:text-cream-dim/60 focus:border-sand";
+    "w-full rounded-sm border border-rule bg-canvas px-4 py-3 text-ink outline-none transition-colors placeholder:text-ink-soft/60 focus:border-brass";
 
   return (
     <div>
-      <div className="mb-8 grid grid-cols-2 gap-2 rounded-sm border border-ink-line p-1">
+      <div className="mb-8 grid grid-cols-2 gap-2 rounded-sm border border-rule p-1">
         {(
           [
             ["google", "חשבון Google"],
@@ -110,8 +110,8 @@ export function LoginForm({ configured }: { configured: boolean }) {
             }}
             className={`rounded-sm px-4 py-2.5 text-sm transition-colors ${
               mode === value
-                ? "bg-cream text-ink"
-                : "text-cream-dim hover:text-cream"
+                ? "bg-ink text-canvas"
+                : "text-ink-soft hover:text-ink"
             }`}
           >
             {label}
@@ -124,7 +124,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
           type="button"
           onClick={signInWithGoogle}
           disabled={busy}
-          className="flex w-full items-center justify-center gap-3 rounded-sm bg-cream px-6 py-3.5 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-3 rounded-sm bg-ink px-6 py-3.5 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-60"
         >
           <svg aria-hidden viewBox="0 0 24 24" className="h-5 w-5">
             <path
@@ -149,7 +149,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
       ) : !sent ? (
         <form onSubmit={sendCode} className="space-y-4">
           <div>
-            <label htmlFor="phone" className="mb-2 block text-sm text-cream">
+            <label htmlFor="phone" className="mb-2 block text-sm text-ink">
               מספר טלפון
             </label>
             <input
@@ -166,7 +166,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
           <button
             type="submit"
             disabled={busy}
-            className="w-full rounded-sm bg-cream px-6 py-3.5 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-60"
+            className="w-full rounded-sm bg-ink px-6 py-3.5 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-60"
           >
             {busy ? "שולח…" : "שלחו לי קוד ב-SMS"}
           </button>
@@ -174,7 +174,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
       ) : (
         <form onSubmit={verifyCode} className="space-y-4">
           <div>
-            <label htmlFor="code" className="mb-2 block text-sm text-cream">
+            <label htmlFor="code" className="mb-2 block text-sm text-ink">
               הקוד שנשלח אל {phone}
             </label>
             <input
@@ -191,7 +191,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
           <button
             type="submit"
             disabled={busy}
-            className="w-full rounded-sm bg-cream px-6 py-3.5 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-60"
+            className="w-full rounded-sm bg-ink px-6 py-3.5 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-60"
           >
             {busy ? "מאמת…" : "כניסה"}
           </button>
@@ -202,7 +202,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
               setCode("");
               setError(null);
             }}
-            className="w-full text-sm text-cream-dim transition-colors hover:text-cream"
+            className="w-full text-sm text-ink-soft transition-colors hover:text-ink"
           >
             שינוי מספר הטלפון
           </button>

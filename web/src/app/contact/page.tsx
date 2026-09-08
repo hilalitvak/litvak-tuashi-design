@@ -24,13 +24,13 @@ export default function ContactPage() {
         className="object-cover"
       />
       {/* שכבה כהה וכבדה — הרקע הוא אווירה, לא נושא. */}
-      <div className="absolute inset-0 bg-ink/85" />
+      <div className="absolute inset-0 bg-ink/75" />
 
       <div className="relative mx-auto w-full max-w-xl px-5 py-20 text-center sm:px-8">
-        <h1 className="font-display text-4xl font-light text-cream sm:text-5xl">
+        <h1 className="font-display text-4xl font-light text-canvas sm:text-5xl">
           דברו איתנו
         </h1>
-        <p className="mx-auto mt-4 max-w-md leading-relaxed text-cream-dim">
+        <p className="mx-auto mt-4 max-w-md leading-relaxed text-canvas-soft">
           הדרך המהירה ביותר להגיע אלינו. בחרו למי לפנות ונחזור אליכם בהקדם.
         </p>
 
@@ -50,12 +50,12 @@ export default function ContactPage() {
             const email = contact.emails.find((e) => e.owner === phone.owner);
             return (
               <div key={phone.href}>
-                <p className="text-xs tracking-widest text-sand">
+                <p className="text-xs tracking-widest text-brass">
                   {phone.owner}
                 </p>
                 <a
                   href={`tel:${phone.href}`}
-                  className="mt-2 block text-sm text-cream-dim transition-colors hover:text-cream"
+                  className="mt-2 block text-sm text-canvas-soft transition-colors hover:text-canvas"
                   dir="ltr"
                 >
                   {phone.display}
@@ -63,7 +63,7 @@ export default function ContactPage() {
                 {email && (
                   <a
                     href={`mailto:${email.address}`}
-                    className="mt-1 block text-sm text-cream-dim transition-colors hover:text-cream"
+                    className="mt-1 block text-sm text-canvas-soft transition-colors hover:text-canvas"
                     dir="ltr"
                   >
                     {email.address}
@@ -74,7 +74,7 @@ export default function ContactPage() {
           })}
         </div>
 
-        <p className="mt-14 text-sm text-cream-dim/70">
+        <p className="mt-14 text-sm text-canvas-soft/70">
           {contact.address.join(", ")}
         </p>
       </div>

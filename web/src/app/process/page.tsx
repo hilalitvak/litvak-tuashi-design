@@ -36,17 +36,17 @@ export default function ProcessPage() {
               {i < processSteps.length - 1 && (
                 <span
                   aria-hidden
-                  className="absolute top-12 bottom-0 right-6 w-px bg-ink-line"
+                  className="absolute top-12 bottom-0 right-6 w-px bg-rule"
                 />
               )}
-              <span className="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-sand/50 bg-ink font-display text-sand">
+              <span className="relative z-10 grid h-12 w-12 shrink-0 place-items-center rounded-full border border-brass/50 bg-canvas font-display text-brass">
                 {i + 1}
               </span>
               <div className="pt-2">
-                <h3 className="font-display text-xl font-light text-cream">
+                <h3 className="font-display text-xl font-light text-ink">
                   {step.title}
                 </h3>
-                <p className="mt-2 leading-relaxed text-cream-dim">
+                <p className="mt-2 leading-relaxed text-ink-soft">
                   {step.body}
                 </p>
               </div>
@@ -55,12 +55,12 @@ export default function ProcessPage() {
         </ol>
       </Section>
 
-      <section className="border-t border-ink-line bg-ink-soft">
+      <section className="border-t border-rule bg-panel">
         <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8">
-          <h2 className="font-display text-3xl font-light text-cream sm:text-4xl">
+          <h2 className="font-display text-3xl font-light text-ink sm:text-4xl">
             מוכנים להתחיל את המסע שלכם?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-cream-dim">
+          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink-soft">
             בואו נקבע פגישת ייעוץ כדי לדון בפרויקט שלכם ולראות כיצד נוכל להגשים
             את החזון שלכם.
           </p>

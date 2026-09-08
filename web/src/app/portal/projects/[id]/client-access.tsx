@@ -31,7 +31,7 @@ export function ClientAccess({ projectId }: { projectId: string }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-6 rounded-sm border border-ink-line px-4 py-2 text-sm text-cream-dim transition-colors hover:border-sand hover:text-cream"
+        className="mt-6 rounded-sm border border-rule px-4 py-2 text-sm text-ink-soft transition-colors hover:border-brass hover:text-ink"
       >
         + שיוך לקוח לפרויקט
       </button>
@@ -41,10 +41,10 @@ export function ClientAccess({ projectId }: { projectId: string }) {
   return (
     <form
       onSubmit={submit}
-      className="mt-6 rounded-sm border border-ink-line bg-ink-soft p-5"
+      className="mt-6 rounded-sm border border-rule bg-panel p-5"
     >
-      <h2 className="text-sm text-cream">שיוך לקוח</h2>
-      <p className="mt-1 text-xs leading-relaxed text-cream-dim">
+      <h2 className="text-sm text-ink">שיוך לקוח</h2>
+      <p className="mt-1 text-xs leading-relaxed text-ink-soft">
         הלקוח צריך להיכנס פעם אחת דרך עמוד הכניסה עם חשבון Google שלו. אחרי
         הכניסה הראשונה אפשר לשייך אותו כאן, והוא יראה את הפרויקט הזה בלבד.
       </p>
@@ -57,19 +57,19 @@ export function ClientAccess({ projectId }: { projectId: string }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="client@gmail.com"
           dir="ltr"
-          className="min-w-64 flex-1 rounded-sm border border-ink-line bg-ink px-4 py-2.5 text-sm text-cream outline-none placeholder:text-cream-dim/50 focus:border-sand"
+          className="min-w-64 flex-1 rounded-sm border border-rule bg-canvas px-4 py-2.5 text-sm text-ink outline-none placeholder:text-ink-soft/50 focus:border-brass"
         />
         <button
           type="submit"
           disabled={busy}
-          className="rounded-sm bg-cream px-5 py-2.5 text-sm text-ink transition-colors hover:bg-sand disabled:opacity-60"
+          className="rounded-sm bg-ink px-5 py-2.5 text-sm text-canvas transition-colors hover:bg-brass disabled:opacity-60"
         >
           {busy ? "משייך…" : "שייך"}
         </button>
         <button
           type="button"
           onClick={() => setOpen(false)}
-          className="text-sm text-cream-dim transition-colors hover:text-cream"
+          className="text-sm text-ink-soft transition-colors hover:text-ink"
         >
           סגירה
         </button>
@@ -78,7 +78,7 @@ export function ClientAccess({ projectId }: { projectId: string }) {
       {msg && (
         <p
           role="status"
-          className={`mt-3 text-sm ${msg.bad ? "text-red-400" : "text-sand"}`}
+          className={`mt-3 text-sm ${msg.bad ? "text-red-400" : "text-brass"}`}
         >
           {msg.text}
         </p>

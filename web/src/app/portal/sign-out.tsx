@@ -20,7 +20,7 @@ export function SignOutButton() {
       type="button"
       onClick={signOut}
       disabled={busy}
-      className="text-sm text-cream-dim transition-colors hover:text-cream disabled:opacity-50"
+      className="text-sm text-ink-soft transition-colors hover:text-ink disabled:opacity-50"
     >
       {busy ? "יוצא…" : "יציאה"}
     </button>

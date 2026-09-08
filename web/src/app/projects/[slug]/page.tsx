@@ -52,18 +52,18 @@ export default async function ProjectPage({ params }: Params) {
         <div className="relative mx-auto w-full max-w-7xl px-5 pb-16 sm:px-8">
           <Link
             href="/projects"
-            className="text-sm text-cream/70 transition-colors hover:text-sand"
+            className="text-sm text-canvas/75 transition-colors hover:text-canvas"
           >
             ← חזרה לכל הפרויקטים
           </Link>
-          <h1 className="mt-5 font-display text-4xl font-light text-cream sm:text-5xl">
+          <h1 className="mt-5 font-display text-4xl font-light text-canvas sm:text-5xl">
             {project.title}
           </h1>
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-cream-dim">
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-canvas/75">
             {project.location && <span>{project.location}</span>}
             {project.category && (
               <>
-                <span aria-hidden className="text-ink-line">
+                <span aria-hidden className="text-canvas/40">
                   |
                 </span>
                 <span>
@@ -77,7 +77,7 @@ export default async function ProjectPage({ params }: Params) {
 
       {project.description && (
         <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-          <p className="text-lg leading-relaxed text-cream/90">
+          <p className="text-lg leading-relaxed text-ink/90">
             {project.description}
           </p>
         </section>
@@ -105,12 +105,12 @@ export default async function ProjectPage({ params }: Params) {
         </div>
       </section>
 
-      <section className="border-t border-ink-line bg-ink-soft">
+      <section className="border-t border-rule bg-panel">
         <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8">
-          <h2 className="font-display text-3xl font-light text-cream sm:text-4xl">
+          <h2 className="font-display text-3xl font-light text-ink sm:text-4xl">
             אהבתם את מה שראיתם?
           </h2>
-          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-cream-dim">
+          <p className="mx-auto mt-5 max-w-xl leading-relaxed text-ink-soft">
             נשמח לשמוע על הפרויקט שלכם ולהתאים לו את הפתרון הנכון.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
