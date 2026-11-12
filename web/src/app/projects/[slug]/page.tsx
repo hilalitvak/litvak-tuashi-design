@@ -12,6 +12,9 @@ type Params = { params: Promise<{ slug: string }> };
 // slug חדש שסיגל תוסיף ייווצר בבקשה הראשונה במקום להחזיר 404 עד הבנייה הבאה.
 export const dynamicParams = true;
 
+// כמו בעמוד הבית: עריכה ב-Supabase Dashboard מופיעה כאן תוך שעה לכל היותר.
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const projects = await getPortfolioProjects();
   return projects.map((p) => ({ slug: p.slug }));

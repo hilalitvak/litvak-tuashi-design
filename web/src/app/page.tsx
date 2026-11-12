@@ -6,6 +6,10 @@ import { ButtonLink, ProjectCard, SectionHeading } from "@/components/ui";
 import { getPortfolioProjects } from "@/lib/portfolio";
 import { TAGLINE, banners, founders } from "@/lib/site";
 
+// הפרויקטים נערכים ב-Supabase Dashboard, בלי פעולה באתר שתרענן את העמוד.
+// לכן העמוד נבנה מחדש לכל היותר פעם בשעה, בבקשה הראשונה אחרי שהשעה עברה.
+export const revalidate = 3600;
+
 // עמוד הבית הוא עכשיו העמוד המרכזי: הפרויקטים יושבים בתוכו, והכפתורים
 // והניווט גוללים אליהם במקום לטעון עמוד נפרד שהציג בדיוק את אותו דבר.
 export default async function HomePage() {
