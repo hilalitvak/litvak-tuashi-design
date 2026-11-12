@@ -4,7 +4,7 @@ import { PageBanner } from "@/components/page-banner";
 import { ScrollToHash } from "@/components/scroll-to-hash";
 import { ButtonLink, ProjectCard, SectionHeading } from "@/components/ui";
 import { getPortfolioProjects } from "@/lib/portfolio";
-import { STUDIO_NAME_FULL, TAGLINE, banners, founders } from "@/lib/site";
+import { TAGLINE, banners, founders } from "@/lib/site";
 
 // עמוד הבית הוא עכשיו העמוד המרכזי: הפרויקטים יושבים בתוכו, והכפתורים
 // והניווט גוללים אליהם במקום לטעון עמוד נפרד שהציג בדיוק את אותו דבר.
@@ -18,7 +18,6 @@ export default async function HomePage() {
         image={banners.home}
         alt="חלל מגורים פתוח בגוני בטון ואפור: ספה מודולרית ושולחן עץ עגול, פינת אוכל ומטבח עם חזית עץ, וקיר זכוכית אל החצר"
         title="הופכים חללים לחוויות יוצאות דופן"
-        subtitle={`${STUDIO_NAME_FULL} משלב חזון ומומחיות ליצירת חללים יפים ופונקציונליים המשקפים את אישיותכם ואורח חייכם הייחודי.`}
         full
         priority
       >
