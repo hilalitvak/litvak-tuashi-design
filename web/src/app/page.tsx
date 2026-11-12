@@ -38,13 +38,9 @@ export default async function HomePage() {
       <section className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8 sm:py-24">
         <p className="text-xs tracking-[0.3em] text-brass">{TAGLINE}</p>
         <h2 className="mt-5 font-display text-2xl font-light leading-relaxed text-ink sm:text-3xl">
-          סטודיו לעיצוב ואדריכלות פנים שמשלב תכנון הנדסי מוקפד עם חשיבה
-          יצירתית
+          ליטבק - טואשי סטודיו לעיצוב פנים שמשלב תכנון הנדסי מוקפד עם חשיבה
+          יצירתית והתאמת פתרונות לכם
         </h2>
-        <p className="mt-6 text-base leading-relaxed text-ink-soft">
-          מעצבים דירות, בתים פרטיים, פנטהאוזים, משרדים וחללים מסחריים — מהרעיון
-          הראשון ועד היום שנכנסים פנימה.
-        </p>
       </section>
 
       {/* תיק העבודות המלא, כאן ולא בעמוד נפרד. */}
