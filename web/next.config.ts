@@ -1,8 +1,18 @@
 import type { NextConfig } from "next";
+import { IMAGE_BASE } from "./src/lib/images";
+
+// הדלי שממנו האתר באמת מגיש את הצילומים. נגזר מ-IMAGE_BASE עצמו, כדי
+// שההרשאה כאן לא תלויה במשתנה סביבה ולא תוכל לסטות מהכתובת בקוד.
+const imageBase = new URL(IMAGE_BASE);
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: imageBase.hostname,
+        pathname: `${imageBase.pathname}**`,
+      },
       // צילומי הפרויקטים. כרגע מוגשים מהאחסון שבו Base44 שמרה אותם;
       // לאחר ההעברה לדלי Supabase שלכם — להחליף כאן ולעדכן IMAGE_BASE ב-src/lib/portfolio.ts.
       {
