@@ -16,6 +16,7 @@ export default async function HomePage() {
       <ScrollToHash />
       <PageBanner
         image={banners.home}
+        alt="סלון מואר בעיצוב מינימליסטי: ספרייה מעץ בהיר, פופים לבנים על רצפת פרקט, וקיר זכוכית הנפתח אל גינה ירוקה"
         title="הופכים חללים לחוויות יוצאות דופן"
         subtitle={`${STUDIO_NAME_FULL} משלב חזון ומומחיות ליצירת חללים יפים ופונקציונליים המשקפים את אישיותכם ואורח חייכם הייחודי.`}
         full
