@@ -84,17 +84,6 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className={`hidden rounded-sm border px-5 py-2.5 text-[15px] transition-colors sm:inline-block ${
-              onImage
-                ? "border-white/40 text-white hover:border-white"
-                : "border-rule text-ink hover:border-brass hover:text-brass"
-            }`}
-          >
-            כניסה לפורטל
-          </Link>
-
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -140,12 +129,6 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/login"
-            className="mt-5 block rounded-sm border border-brass px-5 py-3 text-center text-brass"
-          >
-            כניסה לפורטל
-          </Link>
         </nav>
       )}
     </header>

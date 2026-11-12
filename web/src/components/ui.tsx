@@ -83,7 +83,9 @@ export function ProjectCard({ project }: { project: PortfolioProject }) {
       <div className="relative aspect-4/3 overflow-hidden">
         <Image
           src={img(project.banner_image)}
-          alt={project.title}
+          // הכותרת והמיקום כבר כתובים בכרטיס. alt זהה היה גורם לקורא מסך
+          // להקריא את שם הפרויקט פעמיים בתוך שם הקישור.
+          alt=""
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"

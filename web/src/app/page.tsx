@@ -4,7 +4,7 @@ import { PageBanner } from "@/components/page-banner";
 import { ScrollToHash } from "@/components/scroll-to-hash";
 import { ButtonLink, ProjectCard, SectionHeading } from "@/components/ui";
 import { getPortfolioProjects } from "@/lib/portfolio";
-import { STUDIO_NAME_FULL, TAGLINE, banners, founders } from "@/lib/site";
+import { TAGLINE, banners, founders } from "@/lib/site";
 
 // עמוד הבית הוא עכשיו העמוד המרכזי: הפרויקטים יושבים בתוכו, והכפתורים
 // והניווט גוללים אליהם במקום לטעון עמוד נפרד שהציג בדיוק את אותו דבר.
@@ -16,8 +16,8 @@ export default async function HomePage() {
       <ScrollToHash />
       <PageBanner
         image={banners.home}
+        alt="חלל מגורים פתוח בגוני בטון ואפור: ספה מודולרית ושולחן עץ עגול, פינת אוכל ומטבח עם חזית עץ, וקיר זכוכית אל החצר"
         title="הופכים חללים לחוויות יוצאות דופן"
-        subtitle={`${STUDIO_NAME_FULL} משלב חזון ומומחיות ליצירת חללים יפים ופונקציונליים המשקפים את אישיותכם ואורח חייכם הייחודי.`}
         full
         priority
       >
@@ -38,13 +38,9 @@ export default async function HomePage() {
       <section className="mx-auto max-w-3xl px-5 py-20 text-center sm:px-8 sm:py-24">
         <p className="text-xs tracking-[0.3em] text-brass">{TAGLINE}</p>
         <h2 className="mt-5 font-display text-2xl font-light leading-relaxed text-ink sm:text-3xl">
-          סטודיו לעיצוב ואדריכלות פנים שמשלב תכנון הנדסי מוקפד עם חשיבה
-          יצירתית
+          ליטבק - טואשי סטודיו לעיצוב פנים שמשלב תכנון הנדסי מוקפד עם חשיבה
+          יצירתית והתאמת פתרונות לכם
         </h2>
-        <p className="mt-6 text-base leading-relaxed text-ink-soft">
-          מעצבים דירות, בתים פרטיים, פנטהאוזים, משרדים וחללים מסחריים — מהרעיון
-          הראשון ועד היום שנכנסים פנימה.
-        </p>
       </section>
 
       {/* תיק העבודות המלא, כאן ולא בעמוד נפרד. */}

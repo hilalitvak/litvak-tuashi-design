@@ -3,6 +3,8 @@ import { img } from "@/lib/images";
 
 type Props = {
   image: string;
+  /** ריק כברירת מחדל: ברוב העמודים הצילום הוא רקע דקורטיבי לכותרת. */
+  alt?: string;
   title: string;
   subtitle?: string;
   /** גובה מלא לעמוד הבית, נמוך יותר לעמודים פנימיים. */
@@ -13,6 +15,7 @@ type Props = {
 
 export function PageBanner({
   image,
+  alt = "",
   title,
   subtitle,
   full = false,
@@ -27,7 +30,7 @@ export function PageBanner({
     >
       <Image
         src={img(image)}
-        alt=""
+        alt={alt}
         fill
         priority={priority}
         sizes="100vw"
