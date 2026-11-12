@@ -1,8 +1,7 @@
 // תיק העבודות נקרא מבסיס הנתונים, לא מקובץ.
-// סיגל ובן מנהלים אותו דרך /portal/portfolio — הוספה, עריכה, סדר ומחיקה —
+// סיגל ובן מנהלים אותו ב-Supabase Dashboard (Table Editor ו-Storage) —
 // בלי שאף אחד יצטרך לגעת בקוד.
 
-import { createClient } from "@/lib/supabase/server";
 import { createPublicClient } from "@/lib/supabase/public";
 
 export { IMAGE_BASE, img } from "@/lib/images";
@@ -31,7 +30,7 @@ export async function getPortfolioProjects(): Promise<PortfolioProject[]> {
     .from("portfolio_projects")
     .select(COLUMNS)
     .eq("status", "active")
-    // מובחרים קודם, ובתוך כל קבוצה לפי הסדר שנקבע בפורטל.
+    // מובחרים קודם, ובתוך כל קבוצה לפי sort_order.
     .order("is_featured", { ascending: false })
     .order("sort_order", { ascending: false });
 
@@ -55,15 +54,4 @@ export async function getProject(
     .maybeSingle();
 
   return (data as PortfolioProject) ?? null;
-}
-
-/** כל הפרויקטים, כולל מוסתרים — לניהול בלבד. */
-export async function getAllProjectsForAdmin(): Promise<PortfolioProject[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("portfolio_projects")
-    .select(COLUMNS)
-    .order("sort_order", { ascending: false });
-
-  return (data as PortfolioProject[]) ?? [];
 }
