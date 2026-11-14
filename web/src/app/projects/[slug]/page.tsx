@@ -79,10 +79,17 @@ export default async function ProjectPage({ params }: Params) {
       </section>
 
       {project.description && (
-        <section className="mx-auto max-w-3xl px-5 py-16 sm:px-8">
-          <p className="text-lg leading-relaxed text-ink/90">
-            {project.description}
-          </p>
+        <section className="mx-auto max-w-3xl space-y-5 px-5 py-16 sm:px-8">
+          {/* שורה ריקה בתיאור (ב-Supabase) מפרידה בין פסקאות. */}
+          {project.description
+            .split(/\n\s*\n/)
+            .map((para) => para.trim())
+            .filter(Boolean)
+            .map((para, i) => (
+              <p key={i} className="text-lg leading-relaxed text-ink/90">
+                {para}
+              </p>
+            ))}
         </section>
       )}
 
