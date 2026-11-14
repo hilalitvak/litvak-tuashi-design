@@ -8,7 +8,10 @@ import { STUDIO_NAME_EN, nav } from "@/lib/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  // התפריט הנייד זוכר באיזה עמוד נפתח, ונחשב פתוח רק שם — כך מעבר עמוד
+  // סוגר אותו בלי setState בתוך effect (שגורם לרינדור כפול).
+  const [openOn, setOpenOn] = useState<string | null>(null);
+  const open = openOn === pathname;
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,13 +21,10 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // סגירת התפריט הנייד במעבר בין עמודים.
-  useEffect(() => setOpen(false), [pathname]);
-
   // רק חלק מהעמודים נפתחים בצילום מלא־רוחב. שם הכותרת שקופה ובהירה;
   // בשאר (אודות, כניסה, משפטיים) היא יושבת ישר על רקע בהיר, ואם לא
   // נבדיל — הלוגו הלבן והניווט הלבן פשוט נעלמים.
-  const heroPages = ["/", "/process", "/contact"];
+  const heroPages = ["/", "/projects", "/process", "/contact"];
   const hasHero =
     heroPages.includes(pathname) || pathname.startsWith("/projects/");
   const onImage = hasHero && !scrolled && !open;
@@ -86,7 +86,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => setOpenOn(open ? null : pathname)}
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "סגירת התפריט" : "פתיחת התפריט"}

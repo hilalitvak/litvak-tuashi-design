@@ -29,7 +29,7 @@ export const categoryLabels: Record<string, string> = {
 export const nav = [
   { href: "/", label: "בית" },
   { href: "/about", label: "אודות" },
-  { href: "/#projects", label: "פרויקטים" },
+  { href: "/projects", label: "פרויקטים" },
   { href: "/process", label: "התהליך שלנו" },
   { href: "/contact", label: "צור קשר" },
 ] as const;
@@ -68,7 +68,7 @@ export const founders = [
     name: "סיגל ליטבק",
     role: "שותפה ומעצבת ראשית",
     // חתוך מראש לריבוע (scripts לא נשמר — נעשה ידנית עם sharp).
-    photo: "/sigal-sq.jpg",
+    photo: "/sigal-portrait.jpg",
     bio: "בוגרת הטכניון בעיצוב פנים ובהנדסת תעשייה וניהול. מגיעה מעולם התכנון המדויק וניהול פרויקטים מורכבים, עם הבנה מעמיקה בתהליכי בנייה — מה שמאפשר לה להפוך רעיונות מורכבים לתוכניות שעובדות באמת.",
   },
   {

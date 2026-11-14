@@ -6,10 +6,15 @@ import { ButtonLink, ProjectCard, SectionHeading } from "@/components/ui";
 import { getPortfolioProjects } from "@/lib/portfolio";
 import { TAGLINE, banners, founders } from "@/lib/site";
 
-// עמוד הבית הוא עכשיו העמוד המרכזי: הפרויקטים יושבים בתוכו, והכפתורים
-// והניווט גוללים אליהם במקום לטעון עמוד נפרד שהציג בדיוק את אותו דבר.
+// הפרויקטים נערכים ב-Supabase Dashboard, בלי פעולה באתר שתרענן את העמוד.
+// לכן העמוד נבנה מחדש לכל היותר פעם בשעה, בבקשה הראשונה אחרי שהשעה עברה.
+export const revalidate = 3600;
+
+// כמה פרויקטים מוצגים בעמוד הבית. כולם מופיעים בעמוד /projects, באותו סדר.
+const HOME_PROJECT_COUNT = 4;
+
 export default async function HomePage() {
-  const projects = await getPortfolioProjects();
+  const projects = (await getPortfolioProjects()).slice(0, HOME_PROJECT_COUNT);
 
   return (
     <>
@@ -22,7 +27,7 @@ export default async function HomePage() {
         priority
       >
         <div className="flex flex-wrap items-center justify-center gap-4">
-          <ButtonLink href="#projects" onDark>
+          <ButtonLink href="/projects" onDark>
             צפו בפרויקטים שלנו
           </ButtonLink>
           <ButtonLink href="#designers" variant="outline" onDark>
@@ -43,7 +48,7 @@ export default async function HomePage() {
         </h2>
       </section>
 
-      {/* תיק העבודות המלא, כאן ולא בעמוד נפרד. */}
+      {/* טעימה מתיק העבודות — הפרויקטים הראשונים לפי הסדר; השאר בעמוד /projects. */}
       <section
         id="projects"
         className="scroll-mt-24 border-y border-rule bg-panel"
@@ -54,10 +59,15 @@ export default async function HomePage() {
             title="הפרויקטים שלנו"
             body="חללים מעוצבים בקפידה ברחבי הארץ. לחצו על פרויקט לצפייה בגלריה המלאה."
           />
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2">
             {projects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
+          </div>
+          <div className="mt-14 text-center">
+            <ButtonLink href="/projects" variant="outline">
+              לכל הפרויקטים
+            </ButtonLink>
           </div>
         </div>
       </section>
