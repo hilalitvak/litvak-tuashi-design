@@ -24,7 +24,7 @@ export function SiteHeader() {
   // רק חלק מהעמודים נפתחים בצילום מלא־רוחב. שם הכותרת שקופה ובהירה;
   // בשאר (אודות, כניסה, משפטיים) היא יושבת ישר על רקע בהיר, ואם לא
   // נבדיל — הלוגו הלבן והניווט הלבן פשוט נעלמים.
-  const heroPages = ["/", "/process", "/contact"];
+  const heroPages = ["/", "/projects", "/process", "/contact"];
   const hasHero =
     heroPages.includes(pathname) || pathname.startsWith("/projects/");
   const onImage = hasHero && !scrolled && !open;
